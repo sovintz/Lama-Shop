@@ -2,12 +2,16 @@
 
 import Image from 'next/image'
 import styles from './page.module.css'
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 export default function Home() {
+
+  const [hostname, setHostname] = useState("")
+
   useEffect(() => {
     // window is accessible here.
     console.log(window.location.hostname)
+    setHostname(window.location.hostname)
   }, []);
 
   return (
@@ -47,6 +51,7 @@ export default function Home() {
         />
       </div>
 
+      <h1>{hostname}</h1>
       <div className={styles.grid}>
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
