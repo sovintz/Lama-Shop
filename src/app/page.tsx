@@ -10,6 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     // window is accessible here.
+    console.log("Hello, World!")
     console.log(window.location.hostname)
     setHostname(window.location.hostname)
   }, []);
