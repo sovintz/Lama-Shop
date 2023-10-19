@@ -2,8 +2,8 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import {useEffect, useState} from "react";
 import {headers} from 'next/headers';
-import {storefront} from "@/app/_utils/shopfy-gql";
-import CheckoutCreate from "@/app/_components/checkoutCreate";
+import {storefront} from "@/utils/shopfy-gql";
+import CheckoutCreate from "@/components/checkoutCreate";
 
 export default async function Home() {
 
