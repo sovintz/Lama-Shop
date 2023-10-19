@@ -27,7 +27,7 @@ export default async function Home() {
 
             <CheckoutCreate/>*/}
 
-            <Product/>
+            <Product product_data={data}/>
 
         </main>
     )
