@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {headers} from 'next/headers';
 import {storefront} from "@/utils/shopfy-gql";
 import CheckoutCreate from "@/components/checkoutCreate";
+import Product from "@/components/Product";
 
 export default async function Home() {
 
@@ -20,11 +21,13 @@ export default async function Home() {
         <main className={styles.main}>
 
 
-            <h1>{hostname}</h1>
+            {/*<h1>{hostname}</h1>
 
             <div>{JSON.stringify(data)}</div>
 
-            <CheckoutCreate/>
+            <CheckoutCreate/>*/}
+
+            <Product/>
 
         </main>
     )
