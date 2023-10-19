@@ -6,7 +6,7 @@ export default function CheckoutCreate() {
 
 
     const test = async () => {
-        console.log(await createCheckout("8621599228232"))
+        console.log(await createCheckout("gid://shopify/ProductVariant/47668530512200"))
     }
 
     return (
