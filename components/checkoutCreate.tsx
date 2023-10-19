@@ -1,6 +1,6 @@
 "use client"
 import styles from "@/app/(routes)/page.module.css";
-import {storefront} from "@/app/_utils/shopfy-gql";
+import {storefront} from "@/utils/shopfy-gql";
 
 export default function CheckoutCreate() {
 
