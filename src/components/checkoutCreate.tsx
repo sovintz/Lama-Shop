@@ -1,6 +1,7 @@
 "use client"
 import styles from "@/app/(routes)/page.module.css";
 import {storefront} from "@/utils/shopfy-gql";
+import {Button} from "@mui/material";
 
 export default function CheckoutCreate() {
 
@@ -11,7 +12,7 @@ export default function CheckoutCreate() {
 
     return (
 
-        <button onClick={test}>test</button>
+        <Button variant="contained" onClick={test}>test</Button>
 
     )
 }
