@@ -4,6 +4,7 @@ import {headers} from 'next/headers';
 import {storefront} from "@/utils/shopfy-gql";
 import CheckoutCreate from "@/components/checkoutCreate";
 import Product from "@/components/Product";
+import Header from "@/components/Header";
 
 export default async function Home() {
 
@@ -25,7 +26,7 @@ export default async function Home() {
             <div>{JSON.stringify(data)}</div>
 
             <CheckoutCreate/>*/}
-
+            <Header/>
             <Product product_data={data}/>
 
         </main>

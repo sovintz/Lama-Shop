@@ -20,7 +20,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <GoogleAnalytics/>
         <ThemeRegistry options={{key: 'mui'}}>
             <NavBar/>
-            <Box mx={2}>
+            <Box >
                 {children}
             </Box>
         </ThemeRegistry>
