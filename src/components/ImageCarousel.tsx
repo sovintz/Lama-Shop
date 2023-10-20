@@ -4,6 +4,7 @@ import {Box} from "@mui/system";
 import {Button, MobileStepper} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from '@mui/icons-material';
 import {useSwipeable} from "react-swipeable";
+import Image from "next/image";
 
 export default function ImageCarousel({raw_images}) {
     const [activeStep, setActiveStep] = React.useState(0);
@@ -43,24 +44,25 @@ export default function ImageCarousel({raw_images}) {
         <Box sx={{maxWidth: 400, flexGrow: 1}} {...handlers}>
 
             {images.map((cur_img, index: number) => (
-                <div key={index} >
+                <div key={index}>
                     {activeStep === index && (
-                        <Box
-                            component="img"
-                            sx={{
-                                height: 255,
-                                display: 'block',
-                                maxWidth: 400,
-                                overflow: 'hidden',
+                        <Image
+                            width={1000}
+                            height={1000}
+                            style={{
+                                objectFit: "contain",
+                                top: 0,
+                                right: 0,
+                                zIndex: 0,
                                 width: '100%',
-                                borderRadius: 4,
+                                height: '100%',
 
                             }}
                             src={cur_img.imgPath}
                             alt={cur_img.alt}
                         />
-                    )}
 
+                    )}
 
                 </div>
             ))}

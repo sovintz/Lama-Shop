@@ -1,6 +1,7 @@
 import {Button, Grid, Typography} from "@mui/material";
 import ImageCarousel from "@/components/ImageCarousel";
 import VariantSelector from "@/components/VariantSelector";
+import CheckoutCreate from "@/components/checkoutCreate";
 
 export default function Product({product_data}) {
 
@@ -8,7 +9,7 @@ export default function Product({product_data}) {
     console.log(product)
 
     return (
-        <Grid container>
+        <Grid container sx={{p:2}}>
             <Grid item xs={12} justifyContent={"start"} >
                 <Typography variant="h4" component="h2" align="left">
                     {product.title}
@@ -32,6 +33,10 @@ export default function Product({product_data}) {
                 <Typography variant="body1" align="left">
                     {product.description}
                 </Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+                <CheckoutCreate/>
             </Grid>
         </Grid>
     )
