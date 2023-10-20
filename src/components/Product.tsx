@@ -1,4 +1,6 @@
 import {Button, Grid, Typography} from "@mui/material";
+import ImageCarousel from "@/components/ImageCarousel";
+import VariantSelector from "@/components/VariantSelector";
 
 export default function Product({product_data}) {
 
@@ -16,6 +18,14 @@ export default function Product({product_data}) {
                 <Typography variant="h6" component="h3" align="left">
                     {product.priceRange.minVariantPrice.amount}
                 </Typography>
+            </Grid>
+
+            <Grid item xs={12}>
+                <ImageCarousel raw_images={product.images.edges}/>
+            </Grid>
+
+            <Grid item xs={12}>
+                <VariantSelector raw_variants={product.variants.edges}/>
             </Grid>
 
             <Grid item xs={12}>

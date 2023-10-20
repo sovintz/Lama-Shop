@@ -8,7 +8,11 @@ const theme = createTheme({
         },
         secondary: {
             main: '#00ffff',
+        },
+        background: {
+            default: '#F7F7F9',
         }
+
     },
     // Add other theme customization here
 });

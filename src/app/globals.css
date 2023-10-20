@@ -1,0 +1,8 @@
+.carousel-button {
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.2s;
+}
+
+.carousel-button:hover {
+    visibility: visible; /* Customize the hover effect */
+}

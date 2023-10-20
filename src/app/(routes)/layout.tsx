@@ -3,6 +3,8 @@ import {Inter} from 'next/font/google'
 import '../globals.css'
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import NavBar from "@/components/NavBar";
+import {Box} from "@mui/system";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -15,8 +17,13 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <body className={inter.className}>
-        <GoogleAnalytics />
-        <ThemeRegistry options={{key: 'mui'}}>{children}</ThemeRegistry>
+        <GoogleAnalytics/>
+        <ThemeRegistry options={{key: 'mui'}}>
+            <NavBar/>
+            <Box mx={2}>
+                {children}
+            </Box>
+        </ThemeRegistry>
         </body>
         </html>
     )

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import {useEffect, useState} from "react";
 import {headers} from 'next/headers';
 import {storefront} from "@/utils/shopfy-gql";
 import CheckoutCreate from "@/components/checkoutCreate";
@@ -34,10 +33,8 @@ export default async function Home() {
 }
 
 
-
-
 const gql = String.raw
-const productQuery = gql`
+const productQuery: string = gql`
      query SingleProduct($product_id: ID) {
       product(id: $product_id) {
         title
