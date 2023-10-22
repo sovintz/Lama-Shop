@@ -17,7 +17,7 @@ export default function CheckoutCreate() {
     )
 }
 
-async function createCheckout(variantId) {
+async function createCheckout(variantId: any) {
     const gql = String.raw
     const mutation = gql`
     mutation checkoutCreate($input: CheckoutCreateInput!) {
