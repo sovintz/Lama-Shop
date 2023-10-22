@@ -10,7 +10,7 @@ export default function VariantSelector({raw_variants}) {
     const [activeVariant, setActiveVariant] = React.useState(-1);
     const maxVariants = raw_variants.length;
 
-    const variants = raw_variants.map((cur_variant) => {
+    const variants = raw_variants.map((cur_variant: any) => {
         return {
             id: cur_variant.node.id,
             imgSrc: cur_variant.node.image.url,
