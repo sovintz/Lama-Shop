@@ -6,11 +6,11 @@ import {KeyboardArrowLeft, KeyboardArrowRight} from '@mui/icons-material';
 import {useSwipeable} from "react-swipeable";
 import Image from "next/image";
 
-export default function ImageCarousel({raw_images}) {
+export default function ImageCarousel({raw_images} : any) {
     const [activeStep, setActiveStep] = React.useState(0);
     const maxSteps = raw_images.length;
 
-    const images = raw_images.map((cur_img) => {
+    const images = raw_images.map((cur_img : any) => {
         return {
             imgPath: cur_img.node.url,
             alt: cur_img.node.altText,
@@ -43,7 +43,7 @@ export default function ImageCarousel({raw_images}) {
     return (
         <Box sx={{maxWidth: 400, flexGrow: 1}} {...handlers}>
 
-            {images.map((cur_img, index: number) => (
+            {images.map((cur_img: any, index: number) => (
                 <div key={index}>
                     {activeStep === index && (
                         <Image
