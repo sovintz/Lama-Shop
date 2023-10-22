@@ -3,7 +3,7 @@ import ImageCarousel from "@/components/ImageCarousel";
 import VariantSelector from "@/components/VariantSelector";
 import CheckoutCreate from "@/components/checkoutCreate";
 
-export default function Product({product_data}) {
+export default function Product({product_data}:any) {
 
     const {product} = product_data
     console.log(product)
