@@ -5,7 +5,7 @@ import {Box} from "@mui/system";
 import Image from "next/image";
 import React from "react";
 
-export default function VariantSelector({raw_variants}) {
+export default function VariantSelector({raw_variants}: any) {
 
     const [activeVariant, setActiveVariant] = React.useState(-1);
     const maxVariants = raw_variants.length;
@@ -25,7 +25,7 @@ export default function VariantSelector({raw_variants}) {
 
     return (
         <Grid container spacing={2} mb={4}>
-            {variants.map((variant, index: number) => (
+            {variants.map((variant: any, index: number) => (
                 <Grid item key={index}>
                     <Box onClick={() => handleVariantChange(index)}
                         sx={{
