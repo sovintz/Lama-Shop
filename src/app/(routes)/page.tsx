@@ -7,6 +7,7 @@ import Product from "@/components/Product";
 import Header from "@/components/Header";
 import Marketing from "@/components/Marketing";
 import Guarantees from "@/components/Guarantees";
+import {useProductStore} from "@/stores/productStore"
 
 
 const dataTest = {
@@ -29,6 +30,8 @@ export default async function Home() {
     const descriptionJSON = JSON.parse(data.product.description)
     const images = data.product.images.edges
     console.log(images)
+    useProductStore.setState(state => state.setProduct("test"))
+    useProductStore.getState().setVariant("3333")
 
     return (
         <main className={styles.main}>
@@ -39,6 +42,9 @@ export default async function Home() {
             <div>{JSON.stringify(data)}</div>
 
             <CheckoutCreate/>*/}
+            {/*Server-rendered component state access*/}
+            <h1>{JSON.stringify(useProductStore.getState().product)}</h1>
+            <h1>{useProductStore.getState().variant}</h1>
             <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
             <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
             <Product product_data={data}/>
