@@ -23,9 +23,11 @@ export default async function Home() {
     await useProductStore.getState().setProduct()
     const data:any = await useProductStore.getState().product
 
-    const descriptionJSON = JSON.parse(data.product.description)
+    console.log(data)
+
+    /*const descriptionJSON = JSON.parse(data.product.description)
     const images = data.product.images.edges
-    console.log(images)
+    console.log(images)*/
 
 
 
@@ -41,10 +43,10 @@ export default async function Home() {
             {/*Server-rendered component state access*/}
             {/*<h1>{JSON.stringify(useProductStore.getState().product)}</h1>
             <h1>{useProductStore.getState().variant}</h1>*/}
-            <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
+            {/*<Header title={descriptionJSON.mainTitle} image={images[0].node}/>
             <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
             <Product product_data={data}/>
-            <Guarantees/>
+            <Guarantees/>*/}
 
         </main>
     )
