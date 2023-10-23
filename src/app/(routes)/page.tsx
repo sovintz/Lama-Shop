@@ -5,6 +5,7 @@ import {storefront} from "@/utils/shopfy-gql";
 import CheckoutCreate from "@/components/checkoutCreate";
 import Product from "@/components/Product";
 import Header from "@/components/Header";
+import {useProductStore} from "@/stores/productStore"
 
 export default async function Home() {
 
@@ -16,6 +17,8 @@ export default async function Home() {
     const headersList = headers();
     const hostname = headersList.get('host'); // to get domain
 
+    useProductStore.setState(state => state.setProduct("test"))
+    useProductStore.getState().setVariant("3333")
 
     return (
         <main className={styles.main}>
@@ -27,6 +30,9 @@ export default async function Home() {
 
             <CheckoutCreate/>*/}
             <Header/>
+            {/*Server-rendered component state access*/}
+            <h1>{JSON.stringify(useProductStore.getState().product)}</h1>
+            <h1>{useProductStore.getState().variant}</h1>
             <Product product_data={data}/>
 
         </main>
