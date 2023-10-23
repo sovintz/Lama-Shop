@@ -1,4 +1,4 @@
-export async function storefront(query:string, variables = {}){
+export async function storefront(query:string, variables:object = {}){
 
     const headers = new Headers();
     headers.append("Content-Type", "application/json");

@@ -41,7 +41,7 @@ export default function ImageCarousel({raw_images} : any) {
     };
 
     return (
-        <Box sx={{maxWidth: 400, flexGrow: 1}} {...handlers}>
+        <Box sx={{maxWidth: 400, flexGrow: 1, }} {...handlers}>
 
             {images.map((cur_img: any, index: number) => (
                 <div key={index}>
@@ -56,7 +56,7 @@ export default function ImageCarousel({raw_images} : any) {
                                 zIndex: 0,
                                 width: '100%',
                                 height: '100%',
-
+                                borderRadius:16,
                             }}
                             src={cur_img.imgPath}
                             alt={cur_img.alt}

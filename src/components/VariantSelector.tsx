@@ -24,7 +24,7 @@ export default function VariantSelector({raw_variants}: any) {
     };
 
     return (
-        <Grid container spacing={2} mb={4}>
+        <Grid container spacing={2} mb={2}>
             {variants.map((variant: any, index: number) => (
                 <Grid item key={index}>
                     <Box onClick={() => handleVariantChange(index)}

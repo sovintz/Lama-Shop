@@ -12,7 +12,7 @@ export default function CheckoutCreate() {
 
     return (
 
-        <Button variant="contained" onClick={test} sx={{width:'100%'}}>test</Button>
+        <Button variant="contained" onClick={test} sx={{width:'100%', mb:2}}>test</Button>
 
     )
 }

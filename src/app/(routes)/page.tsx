@@ -5,6 +5,15 @@ import {storefront} from "@/utils/shopfy-gql";
 import CheckoutCreate from "@/components/checkoutCreate";
 import Product from "@/components/Product";
 import Header from "@/components/Header";
+import Marketing from "@/components/Marketing";
+
+
+const dataTest = {
+    "mainTitle": "The Best Product",
+    "marketingTitle": "Marketing",
+    "marketingDescription": "marketing description",
+    "productDescription": "product description",
+}
 
 export default async function Home() {
 
@@ -16,6 +25,9 @@ export default async function Home() {
     const headersList = headers();
     const hostname = headersList.get('host'); // to get domain
 
+    const descriptionJSON = JSON.parse(data.product.description)
+    const images = data.product.images.edges
+    console.log(images)
 
     return (
         <main className={styles.main}>
@@ -26,7 +38,8 @@ export default async function Home() {
             <div>{JSON.stringify(data)}</div>
 
             <CheckoutCreate/>*/}
-            <Header/>
+            <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
+            <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
             <Product product_data={data}/>
 
         </main>

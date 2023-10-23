@@ -6,6 +6,7 @@ import CheckoutCreate from "@/components/checkoutCreate";
 export default function Product({product_data}:any) {
 
     const {product} = product_data
+    const {productDescription} = JSON.parse(product.description)
     console.log(product)
 
     return (
@@ -13,11 +14,6 @@ export default function Product({product_data}:any) {
             <Grid item xs={12} justifyContent={"start"} >
                 <Typography variant="h4" component="h2" align="left">
                     {product.title}
-                </Typography>
-            </Grid>
-            <Grid item xs={12} justifyContent={"start"} >
-                <Typography variant="h6" component="h3" align="left">
-                    {product.priceRange.minVariantPrice.amount}
                 </Typography>
             </Grid>
 
@@ -29,15 +25,29 @@ export default function Product({product_data}:any) {
                 <VariantSelector raw_variants={product.variants.edges}/>
             </Grid>
 
-            <Grid item xs={12}>
-                <Typography variant="body1" align="left">
-                    {product.description}
+            <Grid item xs={12} justifyContent={"start"} mb={1}>
+                <Typography variant="h6" component="h3" align="left">
+                    {product.priceRange.minVariantPrice.amount} €
+                </Typography>
+            </Grid>
+
+            <Grid item xs={12} justifyContent={"start"} mb={1}>
+                <Typography variant="h6" component="h3" align="left">
+                    {product.priceRange.minVariantPrice.amount} €
                 </Typography>
             </Grid>
 
             <Grid item xs={12}>
                 <CheckoutCreate/>
             </Grid>
+
+            <Grid item xs={12}>
+                <Typography variant="body1" align="left">
+                    {productDescription}
+                </Typography>
+            </Grid>
+
+
         </Grid>
     )
 }

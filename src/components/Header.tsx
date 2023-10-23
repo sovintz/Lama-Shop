@@ -1,14 +1,21 @@
 import Image from "next/image";
 import {Box} from "@mui/system";
-import {Grid, Typography} from "@mui/material";
+import {Button, Grid, Typography} from "@mui/material";
 
-export default function Header() {
+interface Props {
+    title: string
+    image:{
+        url:string
+    }
+}
+export default function Header({title, image}:Props) {
+    console.log(title)
     return (
         <Box sx={{height: '100vh', position: 'relative', display:'flex'}}>
 
-            <Image src={'https://cdn.shopify.com/s/files/1/0784/8584/8392/files/red-shirt.jpg?v=1697797666'}
-                   fill
+            <Image src={image.url}
                    alt={'Header image'}
+                   fill
                    style={{
                        position: "absolute",
                        objectFit: "cover",
@@ -17,9 +24,12 @@ export default function Header() {
                        zIndex:0,
                    }}
             />
-            <Grid container zIndex={20} alignItems={'center'} justifyContent={'center'} sx={{height: '100vh'}}>
-                <Grid item xs={12} >
-                    <Typography variant={'h1'} align={'center'}>Hero</Typography>
+            <Grid container zIndex={20} sx={{height: '100vh'}}>
+                <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                    <Typography variant={'h1'} align={'center'}>
+                        {title}
+                    </Typography>
+                    <Button variant={"contained"} sx={{ mt: 3 }}>Discover more</Button>
                 </Grid>
             </Grid>
         </Box>
