@@ -25,16 +25,17 @@ export default async function Home() {
 
     console.log(data)
 
-    /*const descriptionJSON = JSON.parse(data.product.description)
+    const descriptionJSON = JSON.parse(data.product.description)
     const images = data.product.images.edges
-    console.log(images)*/
+    console.log(images)
 
 
 
     return (
         <main className={styles.main}>
 
-
+            {JSON.stringify(data)}
+            {JSON.stringify(descriptionJSON)}
             {/*<h1>{hostname}</h1>
 
             <div>{JSON.stringify(data)}</div>
