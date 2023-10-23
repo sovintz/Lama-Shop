@@ -6,6 +6,7 @@ import CheckoutCreate from "@/components/checkoutCreate";
 import Product from "@/components/Product";
 import Header from "@/components/Header";
 import Marketing from "@/components/Marketing";
+import Guarantees from "@/components/Guarantees";
 
 
 const dataTest = {
@@ -41,6 +42,7 @@ export default async function Home() {
             <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
             <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
             <Product product_data={data}/>
+            <Guarantees/>
 
         </main>
     )

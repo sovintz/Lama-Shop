@@ -5,6 +5,7 @@ import ThemeRegistry from "@/theme/ThemeRegistry";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import NavBar from "@/components/NavBar";
 import {Box} from "@mui/system";
+import Footer from "@/components/Footer";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -23,6 +24,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             <Box >
                 {children}
             </Box>
+            <Footer/>
         </ThemeRegistry>
         </body>
         </html>
