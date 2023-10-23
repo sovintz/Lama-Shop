@@ -7,6 +7,7 @@ import {
 import {Box, styled} from '@mui/system';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import {useProductStore} from "@/stores/productStore";
 
 const NumberInput = React.forwardRef(function CustomNumberInput(
     props: NumberInputProps,
@@ -38,13 +39,16 @@ const NumberInput = React.forwardRef(function CustomNumberInput(
 export default function QuantityInput() {
     const [value, setValue] = React.useState<number>(1);
 
-
+    const handleValueChange = (newValue: number) => {
+        setValue(newValue);
+        useProductStore.getState().setQuantity(newValue)
+    }
 
     return (
         <Box sx={{mb:1, display:'inline-flex', justifyContent:'center', alignItems: 'center'}}>
             Amount:
             <NumberInput aria-label="Quantity Input" min={1} max={99} defaultValue={1} value={value}
-                         onChange={(event, val) => setValue(val === undefined ? 1 : val)}/>
+                         onChange={(event, val) => handleValueChange(val === undefined ? 1 : val)}/>
         </Box>
     )
 }

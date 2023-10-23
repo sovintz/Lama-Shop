@@ -1,7 +1,18 @@
+import {Grid, Typography} from "@mui/material";
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import {useProductStore} from "@/stores/productStore";
+
 export default function Guarantees(){
     return(
-        <div>
-            <h1>Guarantees</h1>
-        </div>
+
+        <Grid container sx={{mx:2}}>
+            <Grid item xs={4} sx={{display: 'flex', }}>
+
+                <EmojiEventsOutlinedIcon fontSize={'large'}/>
+                <Typography variant={'subtitle1'} align={'center'}>Best Quality</Typography>
+
+            </Grid>
+
+        </Grid>
     );
 }

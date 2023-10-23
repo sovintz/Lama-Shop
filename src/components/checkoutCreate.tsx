@@ -1,23 +1,25 @@
 "use client"
-import styles from "@/app/(routes)/page.module.css";
 import {storefront} from "@/utils/shopfy-gql";
 import {Button} from "@mui/material";
+import {useProductStore} from "@/stores/productStore";
 
 export default function CheckoutCreate() {
 
 
-    const test = async () => {
-        console.log(await createCheckout("gid://shopify/ProductVariant/47668530512200"))
+    const createCheckoutLink = async () => {
+        const {data} = await createCheckout()
+        const checkoutLink = data.checkoutCreate.checkout.webUrl
+        console.log(checkoutLink)
     }
 
     return (
 
-        <Button variant="contained" onClick={test} sx={{width:'100%', mb:2}}>test</Button>
+        <Button variant="contained" onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>test</Button>
 
     )
 }
 
-async function createCheckout(variantId: any) {
+async function createCheckout() {
     const gql = String.raw
     const mutation = gql`
     mutation checkoutCreate($input: CheckoutCreateInput!) {
@@ -39,13 +41,12 @@ async function createCheckout(variantId: any) {
         input: {
             lineItems: [
                 {
-                    variantId,
-                    quantity: 1,
+                    variantId: useProductStore.getState().variant,
+                    quantity: useProductStore.getState().quantity,
                 },
             ],
         },
     };
 
-    const data = await storefront(mutation, variables)
-    return data
+    return await storefront(mutation, variables)
 }

@@ -1,18 +1,33 @@
 import { create } from 'zustand'
+import {storefront} from "@/utils/shopfy-gql";
+import {productQuery} from "@/utils/queries";
 
 interface ProductState {
     product: Object
+    productID: string
     variant: string
+    quantity: number
     setVariant: (variant: string) => void
-    setProduct: (productSubdomain: string) => Object
+    setQuantity: (quantity: number) => void
+    setProduct: () => Object
+    setProductID: (productID: string) => void
 }
 
-export const useProductStore = create<ProductState>((set) => ({
+export const useProductStore = create<ProductState>((set, get) => ({
     variant: "",
-    setVariant: (newVariant: string) => set(() => ({ variant: newVariant })),
+    setVariant: (newVariant: string) => set({ variant: newVariant }),
+    quantity: 1,
+    setQuantity: (newQuantity: number) => set(() => ({ quantity: newQuantity })),
     product: {},
-    setProduct: async (productSubdomain: string) => {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts/1")
-        set({ product: await response.json() })
-    }
+    productID: "",
+    setProductID: (new_product_id: string) => set(() => ({ productID: new_product_id })),
+    setProduct: async () => {
+
+        const variables = {
+            product_id: get().productID
+        }
+
+        const {data} = await storefront(productQuery, variables)
+        await set({ product:  data})
+    },
 }))

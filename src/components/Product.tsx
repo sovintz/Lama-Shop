@@ -3,6 +3,7 @@ import ImageCarousel from "@/components/ImageCarousel";
 import VariantSelector from "@/components/VariantSelector";
 import CheckoutCreate from "@/components/checkoutCreate";
 import QuantityInput from "@/components/QuantityInput";
+import AmountCalculator from "@/components/AmountCalculator";
 
 export default function Product({product_data}:any) {
 
@@ -27,16 +28,10 @@ export default function Product({product_data}:any) {
             </Grid>
 
             <Grid item xs={12} justifyContent={"start"} sx={{mb:1, display:'inline-flex', justifyContent:'space-between', alignItems: 'center'}}>
-                <Typography variant="h6" component="h3" align="left">
-                    {product.priceRange.minVariantPrice.amount} €
-                </Typography>
+                <AmountCalculator defaultAmount={product.priceRange.minVariantPrice.amount} raw_variants={product.variants.edges}/>
                 <QuantityInput/>
             </Grid>
 
-            <Grid item xs={12}>
-
-
-            </Grid>
 
             <Grid item xs={12}>
                 <CheckoutCreate/>

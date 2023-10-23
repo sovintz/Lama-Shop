@@ -4,6 +4,8 @@ import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
 import Image from "next/image";
 import React from "react";
+import {useProductStore} from "@/stores/productStore";
+import {Variant} from "@/utils/types";
 
 export default function VariantSelector({raw_variants}: any) {
 
@@ -21,11 +23,12 @@ export default function VariantSelector({raw_variants}: any) {
 
     const handleVariantChange = (step: number) => {
         setActiveVariant(step);
+        useProductStore.getState().setVariant(variants[step].id)
     };
 
     return (
         <Grid container spacing={2} mb={2}>
-            {variants.map((variant: any, index: number) => (
+            {variants.map((variant:Variant , index: number) => (
                 <Grid item key={index}>
                     <Box onClick={() => handleVariantChange(index)}
                         sx={{
