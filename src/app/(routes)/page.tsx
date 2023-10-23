@@ -44,8 +44,8 @@ export default async function Home() {
             {/*Server-rendered component state access*/}
             {/*<h1>{JSON.stringify(useProductStore.getState().product)}</h1>
             <h1>{useProductStore.getState().variant}</h1>*/}
-            {/*<Header title={descriptionJSON.mainTitle} image={images[0].node}/>
-            <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
+            <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
+            {/*<Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
             <Product product_data={data}/>
             <Guarantees/>*/}
 
