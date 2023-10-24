@@ -13,7 +13,15 @@ const theme = createTheme({
             default: '#F7F7F9',
         },
 
+
     },
+    components: {
+        MuiAccordion:{
+            defaultProps: {
+                elevation: 0,
+            }
+        },
+    }
     // Add other theme customization here
 });
 
