@@ -32,10 +32,8 @@ export default async function Home() {
 
 
     return (
-        <main className={styles.main}>
+        <main >
 
-            {JSON.stringify(data)}
-            {JSON.stringify(descriptionJSON)}
             {/*<h1>{hostname}</h1>
 
             <div>{JSON.stringify(data)}</div>

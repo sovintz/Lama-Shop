@@ -1,17 +1,41 @@
-import {Grid, Typography} from "@mui/material";
-import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
-import {useProductStore} from "@/stores/productStore";
+import {Grid, SvgIcon, SvgIconTypeMap, Typography} from "@mui/material";
+import {EmojiEventsOutlined, LocalShippingOutlined, FavoriteBorderOutlined} from  '@mui/icons-material'
+import {OverridableComponent} from "@mui/types";
 
-export default function Guarantees(){
-    return(
+interface GuaranteeObject {
+    icon: OverridableComponent<SvgIconTypeMap>,
+    text: string
+}
 
-        <Grid container sx={{mx:2}}>
-            <Grid item xs={4} sx={{display: 'flex', }}>
 
-                <EmojiEventsOutlinedIcon fontSize={'large'}/>
-                <Typography variant={'subtitle1'} align={'center'}>Best Quality</Typography>
+const content: GuaranteeObject[] = [
+    {
+        icon: EmojiEventsOutlined,
+        text: "No Compromises in Quality"
+    },
+    {
+        icon: FavoriteBorderOutlined,
+        text: "100% Satisfaction Guarantee"
+    },
+    {
+        icon: LocalShippingOutlined,
+        text: "Free Worldwide Shipping"
+    },
+]
 
-            </Grid>
+export default function Guarantees() {
+    return (
+
+        <Grid container sx={{px: 2}}>
+            {content.map((c:GuaranteeObject, index:number) => (
+
+                <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} key={index}>
+                    <SvgIcon component={c.icon} fontSize="large"/>
+                    <Typography variant={'subtitle2'} align={'center'} fontSize={'x-small'}>
+                        {c.text}
+                    </Typography>
+                </Grid>
+            ))}
 
         </Grid>
     );

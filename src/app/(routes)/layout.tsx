@@ -21,9 +21,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <GoogleAnalytics/>
         <ThemeRegistry options={{key: 'mui'}}>
             <NavBar/>
-            <Box >
-                {children}
-            </Box>
+
+            {children}
+
             <Footer/>
         </ThemeRegistry>
         </body>
