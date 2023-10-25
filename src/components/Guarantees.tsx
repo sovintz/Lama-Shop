@@ -1,6 +1,7 @@
-import {Grid, SvgIcon, SvgIconTypeMap, Typography} from "@mui/material";
+import {Avatar, Grid, SvgIcon, SvgIconTypeMap, Typography} from "@mui/material";
 import {EmojiEventsOutlined, LocalShippingOutlined, FavoriteBorderOutlined} from  '@mui/icons-material'
 import {OverridableComponent} from "@mui/types";
+import {Box} from "@mui/system";
 
 interface GuaranteeObject {
     icon: OverridableComponent<SvgIconTypeMap>,
@@ -30,7 +31,10 @@ export default function Guarantees() {
             {content.map((c:GuaranteeObject, index:number) => (
 
                 <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} key={index}>
-                    <SvgIcon component={c.icon} fontSize="large"/>
+                    <Avatar sx={{backgroundColor:'primary.light', width: 56, height: 56}}>
+                        <SvgIcon component={c.icon} sx={{ color:'primary.dark', }}  fontSize="large"/>
+                    </Avatar>
+
                     <Typography variant={'subtitle2'} align={'center'} fontSize={'x-small'}>
                         {c.text}
                     </Typography>

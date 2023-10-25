@@ -29,7 +29,7 @@ export default function Header({title, image}:Props) {
             />
             <Grid container zIndex={20} sx={{height: '100vh'}}>
                 <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <Typography variant={'h1'} align={'center'}>
+                    <Typography variant={'h2'} component={'h1'} align={'center'}>
                         {title}
                     </Typography>
                     <CallToActionButton/>

@@ -112,7 +112,7 @@ const StyledInput = styled('input')(
 
   &:focus {
     border-color: ${theme.palette.primary.main};;
-    box-shadow: 0 0 0 3px ${theme.palette.primary.main};
+    box-shadow: 0 0 0 3px ${theme.palette.primary.light};
   }
 
   &:focus-visible {
@@ -142,7 +142,7 @@ const StyledButton = styled('button')(
   transition-duration: 120ms;
 
   &:hover {
-    background: ${theme.palette.primary.main};
+    background: ${theme.palette.primary.light};
     cursor: pointer;
   }
 
