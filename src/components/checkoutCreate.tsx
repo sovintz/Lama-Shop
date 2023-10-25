@@ -8,8 +8,6 @@ export default function CheckoutCreate() {
 
 
     const createCheckoutLink = async () => {
-        console.log(checkoutCreateMutation)
-
         const {data} = await createCheckout()
         const checkoutLink = data.checkoutCreate.checkout.webUrl
 

@@ -9,6 +9,8 @@ import Marketing from "@/components/Marketing";
 import Guarantees from "@/components/Guarantees";
 import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
+import {useThemeStore} from "@/stores/themeStore";
+import StoreInitializer from "@/components/StoreInitializer";
 
 
 const dataTest = {
@@ -24,17 +26,17 @@ export default async function Home() {
     await useProductStore.getState().setProduct()
     const data:any = await useProductStore.getState().product
 
-    console.log(data)
+    //console.log(data)
 
     const descriptionJSON = JSON.parse(data.product.description)
     const images = data.product.images.edges
-    console.log(images)
+    //console.log(images)
 
-
+    const selectedTheme = 1
 
     return (
         <main >
-
+            <StoreInitializer theme={selectedTheme}/>
             {/*<h1>{hostname}</h1>
 
             <div>{JSON.stringify(data)}</div>

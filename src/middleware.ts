@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {headers} from "next/headers";
+import {useThemeStore} from "@/stores/themeStore";
 
 // This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const headersList = headers();
     const hostname = headersList.get('host');
     console.log(hostname);

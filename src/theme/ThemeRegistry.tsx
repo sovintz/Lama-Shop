@@ -4,8 +4,10 @@ import { useServerInsertedHTML } from 'next/navigation';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import theme from './theme';
-import {useState} from "react";
+import themes from './theme';
+import {useEffect, useState} from "react";
+import {useThemeStore} from "@/stores/themeStore";
+
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
@@ -52,9 +54,25 @@ export default function ThemeRegistry(props: any) {
         );
     });
 
+    // dynamic theme
+    // --------------------
+    const [currentTheme, setCurrentTheme] = useState(themes[0]);
+
+    const selectedTheme = useThemeStore(state => state.theme);
+
+    useEffect(() => {
+        console.log("theme:", selectedTheme);
+
+        if(selectedTheme < themes.length)
+            setCurrentTheme(themes[selectedTheme]);
+
+    }, [selectedTheme]);
+
+
+
     return (
         <CacheProvider value={cache}>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={currentTheme}>
                 <CssBaseline />
                 {children}
             </ThemeProvider>

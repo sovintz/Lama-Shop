@@ -11,7 +11,7 @@ export default function Product({product_data}: any) {
 
     const {product} = product_data
     const {productDescription, productSpecifications} = JSON.parse(product.description)
-    console.log(product)
+    //console.log(product)
 
 
 
