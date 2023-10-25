@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {Box} from "@mui/system";
 import {Button, Grid, Typography} from "@mui/material";
+import CallToActionButton from "@/components/CallToActionButton";
 
 interface Props {
     title: string
@@ -9,7 +10,9 @@ interface Props {
     }
 }
 export default function Header({title, image}:Props) {
-    console.log(title)
+
+
+
     return (
         <Box sx={{height: '100vh', position: 'relative', display:'flex'}}>
 
@@ -29,7 +32,7 @@ export default function Header({title, image}:Props) {
                     <Typography variant={'h1'} align={'center'}>
                         {title}
                     </Typography>
-                    <Button variant={"contained"} sx={{ mt: 3 }}>Discover more</Button>
+                    <CallToActionButton/>
                 </Grid>
             </Grid>
         </Box>

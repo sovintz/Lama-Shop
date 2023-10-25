@@ -4,16 +4,24 @@ import React from "react";
 
 interface Props {
     marketingTitle: string
-    marketingDescription: string
+    marketingDescription1: string
+    marketingDescription2: string
     image:{
         url:string
         altText:string
     }
 }
-export default function Marketing({marketingTitle, marketingDescription, image}:Props) {
+export default function Marketing({marketingTitle, marketingDescription1, marketingDescription2, image}:Props) {
 
     return (
         <Grid container sx={{p:2}}>
+
+            <Grid item xs={12}>
+                <Typography variant="body1" align="left">
+                    {marketingDescription1}
+                </Typography>
+            </Grid>
+
             <Grid item xs={12}>
 
                 <Image
@@ -40,7 +48,7 @@ export default function Marketing({marketingTitle, marketingDescription, image}:
             </Grid>
             <Grid item xs={12}>
                 <Typography variant="body1" align="left">
-                    {marketingDescription}
+                    {marketingDescription2}
                 </Typography>
             </Grid>
         </Grid>

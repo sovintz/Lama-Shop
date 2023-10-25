@@ -2,40 +2,30 @@
 import {storefront} from "@/utils/shopfy-gql";
 import {Button} from "@mui/material";
 import {useProductStore} from "@/stores/productStore";
+import {checkoutCreateMutation} from "@/utils/queries";
 
 export default function CheckoutCreate() {
 
 
     const createCheckoutLink = async () => {
+        console.log(checkoutCreateMutation)
+
         const {data} = await createCheckout()
         const checkoutLink = data.checkoutCreate.checkout.webUrl
-        console.log(checkoutLink)
+
+        window.open(checkoutLink, '_blank');
     }
+    const variantSelected: boolean = !!useProductStore(state => state.variant)
+
 
     return (
 
-        <Button variant="contained" onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>test</Button>
+        <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>test</Button>
 
     )
 }
 
 async function createCheckout() {
-    const gql = String.raw
-    const mutation = gql`
-    mutation checkoutCreate($input: CheckoutCreateInput!) {
-      checkoutCreate(input: $input) {
-        checkout {
-          id
-          webUrl
-        }
-        checkoutUserErrors {
-          code
-          field
-          message
-        }
-      }
-    }
-  `;
 
     const variables = {
         input: {
@@ -48,5 +38,5 @@ async function createCheckout() {
         },
     };
 
-    return await storefront(mutation, variables)
+    return await storefront(checkoutCreateMutation, variables)
 }

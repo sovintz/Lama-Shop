@@ -26,7 +26,7 @@ const content: GuaranteeObject[] = [
 export default function Guarantees() {
     return (
 
-        <Grid container sx={{px: 2}}>
+        <Grid container sx={{px: 2, py:2}}>
             {content.map((c:GuaranteeObject, index:number) => (
 
                 <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} key={index}>

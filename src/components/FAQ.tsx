@@ -15,7 +15,7 @@ const content: FAQObject[] = [
 
 export default function FAQ() {
     return (
-        <Box sx={{px: 2}}>
+        <Box sx={{px: 2, py:2}}>
             {content.map((c: FAQObject, index: number) => (
                 <Accordion key={index} >
                     <AccordionSummary

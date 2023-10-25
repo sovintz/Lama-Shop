@@ -13,10 +13,12 @@ export default function Product({product_data}: any) {
     const {productDescription, productSpecifications} = JSON.parse(product.description)
     console.log(product)
 
+
+
     return (
         <Grid container sx={{p: 2}}>
             <Grid item xs={12} justifyContent={"start"}>
-                <Typography variant="h4" component="h2" align="left">
+                <Typography variant="h4" component="h2" align="left" id="scrollToId">
                     {product.title}
                 </Typography>
             </Grid>

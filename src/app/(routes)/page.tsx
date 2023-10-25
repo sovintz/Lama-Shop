@@ -44,7 +44,7 @@ export default async function Home() {
             {/*<h1>{JSON.stringify(useProductStore.getState().product)}</h1>
             <h1>{useProductStore.getState().variant}</h1>*/}
             <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
-            <Marketing marketingTitle={descriptionJSON.marketingTitle} marketingDescription={descriptionJSON.marketingDescription} image={images[1].node}/>
+            <Marketing {...descriptionJSON} image={images[1].node}/>
             <Product product_data={data}/>
             <Guarantees/>
             <FAQ/>
