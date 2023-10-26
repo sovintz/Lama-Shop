@@ -1,6 +1,6 @@
-import { createTheme } from '@mui/material';
+import {createTheme, Theme} from '@mui/material';
 
-const theme1 = createTheme({
+const themeBlue = createTheme({
     palette: {
         mode: 'light',
         primary: {
@@ -31,13 +31,13 @@ const theme1 = createTheme({
     // Add other theme customization here
 });
 
-const theme2 = createTheme({
+const themeRed = createTheme({
     palette: {
-        mode: 'dark',
+        mode: 'light',
         primary: {
-            main: '#FF0000',
-            light: '#bbdefb', // blue 100
-            dark: '#1976d2', // blue 700
+            main: '#e53935',    // red 600
+            light: '#ffcdd2', // red 100
+            dark: '#d32f2f', // red 700
         },
         secondary: {
             main: '#00ffff',
@@ -62,6 +62,14 @@ const theme2 = createTheme({
     // Add other theme customization here
 });
 
-const themes = [theme1, theme2];
+type PageDictionaryClient = {
+    [theme: string]: Theme
+};
 
-export default themes;
+const themeDictClient: PageDictionaryClient = {
+    'themeBlue': themeBlue,
+    'themeRed': themeRed,
+}
+
+export default themeDictClient
+export { themeBlue, themeRed};

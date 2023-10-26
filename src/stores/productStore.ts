@@ -28,6 +28,6 @@ export const useProductStore = create<ProductState>((set, get) => ({
         }
 
         const {data} = await storefront(productQuery, variables)
-        await set({ product:  data})
+        set({ product:  data})
     },
 }))

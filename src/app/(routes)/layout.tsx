@@ -4,9 +4,8 @@ import '../globals.css'
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import NavBar from "@/components/NavBar";
-import {Box} from "@mui/system";
 import Footer from "@/components/Footer";
-import {useThemeStore} from "@/stores/themeStore";
+import {headers} from "next/headers";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -16,12 +15,14 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({children}: { children: React.ReactNode }) {
+    const headersList = headers();
+    const hostname = headersList.get('host');
 
     return (
         <html lang="en">
         <body className={inter.className}>
         <GoogleAnalytics/>
-        <ThemeRegistry options={{key: 'mui'}}>
+        <ThemeRegistry options={{key: 'mui'}} hostname={hostname}>
             <NavBar/>
 
             {children}

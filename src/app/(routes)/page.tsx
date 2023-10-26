@@ -9,8 +9,7 @@ import Marketing from "@/components/Marketing";
 import Guarantees from "@/components/Guarantees";
 import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
-import {useThemeStore} from "@/stores/themeStore";
-import StoreInitializer from "@/components/StoreInitializer";
+import pageDict from "@/utils/pageConfig";
 
 
 const dataTest = {
@@ -22,9 +21,15 @@ const dataTest = {
 
 export default async function Home() {
 
-    await useProductStore.getState().setProductID("gid://shopify/Product/8621599228232")
-    await useProductStore.getState().setProduct()
-    const data:any = await useProductStore.getState().product
+    const headersList = headers();
+    const hostname = headersList.get('host') ?? 'test.localhost:3000'
+    const productId = pageDict[hostname].productId
+    console.log(productId)
+    //const productId = "gid://shopify/Product/8621599228232"
+
+    useProductStore.getState().setProductID(productId)
+    useProductStore.getState().setProduct()
+    const data:any = useProductStore.getState().product
 
     //console.log(data)
 
@@ -32,11 +37,11 @@ export default async function Home() {
     const images = data.product.images.edges
     //console.log(images)
 
-    const selectedTheme = 1
+
 
     return (
         <main >
-            <StoreInitializer theme={selectedTheme}/>
+
             {/*<h1>{hostname}</h1>
 
             <div>{JSON.stringify(data)}</div>
