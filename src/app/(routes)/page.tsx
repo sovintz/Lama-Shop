@@ -12,11 +12,13 @@ import FAQ from "@/components/FAQ";
 import pageDict from "@/utils/pageConfig";
 
 
-const dataTest = {
+const fallbackDescription = {
     "mainTitle": "The Best Product",
-    "marketingTitle": "Marketing",
-    "marketingDescription": "marketing description",
-    "productDescription": "product description",
+    "marketingTitle": "Marketing Title",
+    "marketingDescription1": "marketing description1",
+    "marketingDescription2": "marketing description2",
+    "productDescription": "Product description",
+    "productSpecifications": "This are the product specifications"
 }
 
 export default async function Home() {
@@ -27,11 +29,12 @@ export default async function Home() {
     console.log(productId)
     //const productId = "gid://shopify/Product/8621599228232"
 
-    useProductStore.getState().setProductID(productId)
-    useProductStore.getState().setProduct()
+    await useProductStore.getState().setProductID(productId)
+    await useProductStore.getState().setProduct()
     const data:any = useProductStore.getState().product
 
-    //console.log(data)
+    console.log("data", data)
+    console.log("productId", useProductStore.getState().productID)
 
     const descriptionJSON = JSON.parse(data.product.description)
     const images = data.product.images.edges

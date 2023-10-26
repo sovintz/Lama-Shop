@@ -5,8 +5,6 @@ import {useProductStore} from "@/stores/productStore";
 import {checkoutCreateMutation} from "@/utils/queries";
 
 export default function CheckoutCreate() {
-
-
     const createCheckoutLink = async () => {
         const {data} = await createCheckout()
         const checkoutLink = data.checkoutCreate.checkout.webUrl
@@ -18,7 +16,7 @@ export default function CheckoutCreate() {
 
     return (
 
-        <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>test</Button>
+        <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>Buy Now</Button>
 
     )
 }
