@@ -10,6 +10,8 @@ import Guarantees from "@/components/Guarantees";
 import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
 import pageDict from "@/utils/pageConfig";
+import {DescriptionsType} from "@/utils/types";
+
 
 
 const fallbackDescription = {
@@ -36,9 +38,11 @@ export default async function Home() {
     console.log("data", data)
     console.log("productId", useProductStore.getState().productID)
 
-    const descriptionJSON = JSON.parse(data.product.description)
+    const descriptionJSON:DescriptionsType = JSON.parse(data.product.description)
     const images = data.product.images.edges
     //console.log(images)
+
+    await useProductStore.getState().setDescriptions(descriptionJSON)
 
 
 
@@ -53,8 +57,8 @@ export default async function Home() {
             {/*Server-rendered component state access*/}
             {/*<h1>{JSON.stringify(useProductStore.getState().product)}</h1>
             <h1>{useProductStore.getState().variant}</h1>*/}
-            <Header title={descriptionJSON.mainTitle} image={images[0].node}/>
-            <Marketing {...descriptionJSON} image={images[1].node}/>
+            <Header image={images[0].node}/>
+            <Marketing image={images[1].node}/>
             <Product product_data={data}/>
             <Guarantees/>
             <FAQ/>

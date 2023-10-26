@@ -1,17 +1,19 @@
 import Image from "next/image";
 import {Box} from "@mui/system";
-import {Button, Grid, Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import CallToActionButton from "@/components/CallToActionButton";
+import {useProductStore} from "@/stores/productStore";
+import {DescriptionsType} from "@/utils/types";
+
 
 interface Props {
-    title: string
     image:{
         url:string
     }
 }
-export default function Header({title, image}:Props) {
+export default function Header({image}:Props) {
 
-
+    const {mainTitle = "Title", callToActionButtonText = "Button"}:DescriptionsType = useProductStore.getState().descriptions
 
     return (
         <Box sx={{height: '100vh', position: 'relative', display:'flex'}}>
@@ -30,9 +32,9 @@ export default function Header({title, image}:Props) {
             <Grid container zIndex={20} sx={{height: '100vh'}}>
                 <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                     <Typography variant={'h2'} component={'h1'} align={'center'}>
-                        {title}
+                        {mainTitle}
                     </Typography>
-                    <CallToActionButton/>
+                    <CallToActionButton callToActionButtonText={callToActionButtonText}/>
                 </Grid>
             </Grid>
         </Box>

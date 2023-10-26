@@ -36,7 +36,7 @@ const NumberInput = React.forwardRef(function CustomNumberInput(
     );
 });
 
-export default function QuantityInput() {
+export default function QuantityInput({ amountText }: { amountText: string }) {
     const [value, setValue] = React.useState<number>(1);
 
     const handleValueChange = (newValue: number) => {
@@ -46,7 +46,7 @@ export default function QuantityInput() {
 
     return (
         <Box sx={{mb:1, display:'inline-flex', justifyContent:'center', alignItems: 'center'}}>
-            Amount:
+            {amountText}:
             <NumberInput aria-label="Quantity Input" min={1} max={99} defaultValue={1} value={value}
                          onChange={(event, val) => handleValueChange(val === undefined ? 1 : val)}/>
         </Box>

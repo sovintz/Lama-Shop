@@ -1,26 +1,22 @@
-import {Accordion, AccordionDetails, AccordionSummary, Divider, Typography} from "@mui/material";
-import {Box, styled} from "@mui/system";
+import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
+import {Box} from "@mui/system";
 import {ExpandMoreOutlined} from '@mui/icons-material'
+import {DescriptionsType, FaqObject} from "@/utils/types";
+import {useProductStore} from "@/stores/productStore";
 
 
-interface FAQObject {
-    question: string,
-    answer: string
-}
-
-const content: FAQObject[] = [
-    {question: "How long does shipping take?", answer: "Shipping takes 2-3 weeks"},
-    {question: "Q2?", answer: "A2"},
-]
 
 export default function FAQ() {
+
+    const {faqTitle, faqs=[]}:DescriptionsType = useProductStore.getState().descriptions
+
     return (
         <Box sx={{px: 2, py:2}}>
             <Typography variant="h5" component="h2" sx={{ mb: 2}}>
-                Freauently Asked Questions
+                {faqTitle}
             </Typography>
 
-            {content.map((c: FAQObject, index: number) => (
+            {faqs.map((c: FaqObject, index: number) => (
                 <Accordion key={index} >
                     <AccordionSummary
                         expandIcon={<ExpandMoreOutlined/>}

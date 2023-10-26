@@ -1,17 +1,18 @@
 import {Grid, Typography} from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import {DescriptionsType} from "@/utils/types";
+import {useProductStore} from "@/stores/productStore";
 
 interface Props {
-    marketingTitle: string
-    marketingDescription1: string
-    marketingDescription2: string
     image:{
         url:string
         altText:string
     }
 }
-export default function Marketing({marketingTitle, marketingDescription1, marketingDescription2, image}:Props) {
+export default function Marketing({image}:Props) {
+
+    const {marketingDescription1, marketingDescription2, marketingTitle}:DescriptionsType = useProductStore.getState().descriptions
 
     return (
         <Grid container sx={{p:2}}>
