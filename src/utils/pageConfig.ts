@@ -13,6 +13,14 @@ const pageDict:PageDictionary = {
     'test2.localhost:3000': {
         productId: 'gid://shopify/Product/8621599228232',
         theme: 'themeRed'
+    },
+    'test.lamashop.eu': {
+        productId: 'gid://shopify/Product/8621599228232',
+        theme: 'themeBlue'
+    },
+    'test2.lamashop.eu': {
+        productId: 'gid://shopify/Product/8621599228232',
+        theme: 'themeRed'
     }
 }
 
