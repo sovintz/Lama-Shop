@@ -1,12 +1,25 @@
 import {createTheme, Theme} from '@mui/material';
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+    weight: ["300", "400"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+});
 
 const themeBlue = createTheme({
+    typography: {
+      fontFamily: poppins.style.fontFamily,
+        button: {
+          textTransform: "none"
+        }
+    },
     palette: {
         mode: 'light',
         primary: {
-            main: '#2196f3', // blue 600
-            light: '#bbdefb', // blue 100
-            dark: '#1976d2', // blue 700
+            main: '#0D6EFD', // blue 600
+            light: '#DAE2ff', // blue 100
+            dark: '#0057CE', // blue 700
         },
         secondary: {
             main: '#00ffff',
@@ -22,6 +35,13 @@ const themeBlue = createTheme({
 
     },
     components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 12,
+                },
+            }
+        },
         MuiAccordion:{
             defaultProps: {
                 elevation: 0,
