@@ -15,7 +15,7 @@ export default function Marketing({image}:Props) {
     const {marketingDescription1, marketingDescription2, marketingTitle}:DescriptionsType = useProductStore.getState().descriptions
 
     return (
-        <Grid container sx={{p:2}}>
+        <Grid container>
 
             <Grid item xs={12}>
                 <Typography variant="body1" align="left">

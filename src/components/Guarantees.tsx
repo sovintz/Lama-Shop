@@ -14,7 +14,7 @@ export default function Guarantees() {
 
     return (
 
-        <Grid container sx={{px: 2, py:2}}>
+        <Grid container sx={{py:2}}>
             {guarantees.map((c:GuaranteeObject, index:number) => (
 
                 <Grid item xs={4} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}} key={index}>
@@ -22,7 +22,7 @@ export default function Guarantees() {
                         <SvgIcon component={icons[index]} sx={{ color:'primary.dark', }}  fontSize="large"/>
                     </Avatar>
 
-                    <Typography variant={'subtitle2'} align={'center'} fontSize={'x-small'}>
+                    <Typography variant={'subtitle2'} align={'center'} fontSize={'small'}>
                         {c.text}
                     </Typography>
                 </Grid>

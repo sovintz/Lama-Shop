@@ -11,7 +11,7 @@ export default function FAQ() {
     const {faqTitle, faqs=[]}:DescriptionsType = useProductStore.getState().descriptions
 
     return (
-        <Box sx={{px: 2, py:2}}>
+        <Box sx={{pb:2}}>
             <Typography variant="h5" component="h2" sx={{ mb: 2}}>
                 {faqTitle}
             </Typography>

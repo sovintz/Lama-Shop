@@ -3,14 +3,13 @@
 import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
 import Image from "next/image";
-import React from "react";
+import React, {useEffect} from "react";
 import {useProductStore} from "@/stores/productStore";
 import {Variant} from "@/utils/types";
 
 export default function VariantSelector({raw_variants}: any) {
 
-    const [activeVariant, setActiveVariant] = React.useState(-1);
-    const maxVariants = raw_variants.length;
+    const [activeVariant, setActiveVariant] = React.useState(0);
 
     const variants = raw_variants.map((cur_variant: any) => {
         return {
@@ -25,6 +24,9 @@ export default function VariantSelector({raw_variants}: any) {
         setActiveVariant(step);
         useProductStore.getState().setVariant(variants[step].id)
     };
+
+    useEffect(() => {handleVariantChange(0)}, [])
+
 
     return (
         <Grid container spacing={2} mb={2}>

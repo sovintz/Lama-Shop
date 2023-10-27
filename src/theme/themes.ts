@@ -62,11 +62,11 @@ const themeRed = createTheme({
     // Add other theme customization here
 });
 
-type PageDictionaryClient = {
+type ThemeDictionaryClient = {
     [theme: string]: Theme
 };
 
-const themeDictClient: PageDictionaryClient = {
+const themeDictClient: ThemeDictionaryClient = {
     'themeBlue': themeBlue,
     'themeRed': themeRed,
 }

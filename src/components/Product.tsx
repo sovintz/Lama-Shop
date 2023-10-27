@@ -22,57 +22,68 @@ export default function Product({product_data}: any) {
 
 
     return (
-        <Grid container sx={{p: 2}}>
+        <Grid container>
+
             <Grid item xs={12} justifyContent={"start"}>
                 <Typography variant="h4" component="h2" align="left" id="scrollToId">
                     {product.title}
                 </Typography>
             </Grid>
 
-            <Grid item xs={12}>
-                <ImageCarousel raw_images={product.images.edges}/>
+            <Grid item xs={12} md={6}>
+                <Grid item>
+                    <ImageCarousel raw_images={product.images.edges}/>
+                </Grid>
+
+                <Grid item>
+                    <VariantSelector raw_variants={product.variants.edges}/>
+                </Grid>
             </Grid>
 
-            <Grid item xs={12}>
-                <VariantSelector raw_variants={product.variants.edges}/>
-            </Grid>
+            <Grid item xs={12} md={6}>
+                <Grid container>
+                    <Grid item xs={12} justifyContent={"start"} order={{xs:1, md:2}}
+                          sx={{
+                              mb: 1,
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              flexGrow: 1
+                          }}>
+                        <AmountCalculator defaultAmount={product.priceRange.minVariantPrice.amount}
+                                          raw_variants={product.variants.edges}/>
+                        <QuantityInput amountText={amountText}/>
+                    </Grid>
 
-            <Grid item xs={12} justifyContent={"start"}
-                  sx={{mb: 1, display: 'inline-flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <AmountCalculator defaultAmount={product.priceRange.minVariantPrice.amount}
-                                  raw_variants={product.variants.edges} />
-                <QuantityInput amountText={amountText}/>
-            </Grid>
 
+                    <Grid item xs={12} order={{xs:2, md:3}}>
+                        <CheckoutCreate buyButtonText={buyButtonText}/>
+                    </Grid>
 
-            <Grid item xs={12}>
-                <CheckoutCreate buyButtonText={buyButtonText}/>
-            </Grid>
-
-            <Grid item xs={12} sx={{mb: 2}}>
-                <Typography variant="body1" align="left">
-                    {productDescription}
-                </Typography>
-            </Grid>
-
-            <Grid item xs={12}>
-                <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreOutlined/>}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography>{specificationsTitle}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            {productSpecifications}
+                    <Grid item xs={12} sx={{mb: 2}} order={{xs:3, md:1}}>
+                        <Typography variant="body1" align="left">
+                            {productDescription}
                         </Typography>
-                    </AccordionDetails>
-                </Accordion>
+                    </Grid>
+
+                    <Grid item xs={12} order={{xs:4, md:4}}>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreOutlined/>}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography>{specificationsTitle}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Typography>
+                                    {productSpecifications}
+                                </Typography>
+                            </AccordionDetails>
+                        </Accordion>
+                    </Grid>
+                </Grid>
             </Grid>
-
-
         </Grid>
     )
 }

@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {Theme} from "@mui/material";
 import {useState} from "react";
-import themeDictClient from "@/theme/theme";
+import themeDictClient from "@/theme/themes";
 import pageDict from "@/utils/pageConfig";
 
 

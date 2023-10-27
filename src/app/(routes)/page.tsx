@@ -11,7 +11,7 @@ import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
 import pageDict from "@/utils/pageConfig";
 import {DescriptionsType} from "@/utils/types";
-
+import {Container} from "@mui/material";
 
 
 const fallbackDescription = {
@@ -33,36 +33,29 @@ export default async function Home() {
 
     await useProductStore.getState().setProductID(productId)
     await useProductStore.getState().setProduct()
-    const data:any = useProductStore.getState().product
+    const data: any = useProductStore.getState().product
 
     console.log("data", data)
     console.log("productId", useProductStore.getState().productID)
 
-    const descriptionJSON:DescriptionsType = JSON.parse(data.product.description)
+    const descriptionJSON: DescriptionsType = JSON.parse(data.product.description)
     const images = data.product.images.edges
     //console.log(images)
 
     await useProductStore.getState().setDescriptions(descriptionJSON)
 
 
-
     return (
-        <main >
+        <main>
 
-            {/*<h1>{hostname}</h1>
-
-            <div>{JSON.stringify(data)}</div>
-
-            <CheckoutCreate/>*/}
-            {/*Server-rendered component state access*/}
-            {/*<h1>{JSON.stringify(useProductStore.getState().product)}</h1>
-            <h1>{useProductStore.getState().variant}</h1>*/}
             <Header image={images[0].node}/>
-            <Marketing image={images[1].node}/>
-            <Product product_data={data}/>
-            <Guarantees/>
-            <FAQ/>
 
+            <Container maxWidth="lg">
+                <Marketing image={images[1].node}/>
+                <Product product_data={data}/>
+                <Guarantees/>
+                <FAQ/>
+            </Container>
         </main>
     )
 }
