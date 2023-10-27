@@ -17,7 +17,8 @@ export default function Product({product_data}: any) {
         productSpecifications,
         specificationsTitle,
         amountText = "Amount",
-        buyButtonText = "Buy Now"
+        buyButtonText = "Buy Now",
+        errorMessages,
     }: DescriptionsType = useProductStore.getState().descriptions
 
 
@@ -57,7 +58,7 @@ export default function Product({product_data}: any) {
 
 
                     <Grid item xs={12} order={{xs:2, md:3}}>
-                        <CheckoutCreate buyButtonText={buyButtonText}/>
+                        <CheckoutCreate buyButtonText={buyButtonText} snackbarText={errorMessages?.noCheckout ?? 'Error'}/>
                     </Grid>
 
                     <Grid item xs={12} sx={{mb: 2}} order={{xs:3, md:1}}>

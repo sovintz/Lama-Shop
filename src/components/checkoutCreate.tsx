@@ -1,23 +1,45 @@
 "use client"
 import {storefront} from "@/utils/shopfy-gql";
-import {Button} from "@mui/material";
+import {Alert, Button, Snackbar} from "@mui/material";
 import {useProductStore} from "@/stores/productStore";
 import {checkoutCreateMutation} from "@/utils/queries";
+import {useState} from "react";
 
-export default function CheckoutCreate({ buyButtonText }: { buyButtonText: string }) {
+interface Props {
+    buyButtonText: string
+    snackbarText: string
+}
+
+export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
+    const [open, setOpen] = useState(false);
+
     const createCheckoutLink = async () => {
         const {data} = await createCheckout()
-        const checkoutLink = data.checkoutCreate.checkout.webUrl
 
-        window.open(checkoutLink, '_blank');
+        try {
+            const checkoutLink = data.checkoutCreate.checkout.webUrl
+
+            window.open(checkoutLink, '_blank');
+        } catch (e) {
+            setOpen(true)
+            setTimeout(() => setOpen(false), 5000)
+        }
+
     }
     const variantSelected: boolean = !!useProductStore(state => state.variant)
 
-
     return (
+        <>
+            <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink}
+                    sx={{width: '100%', mb: 2}}>{buyButtonText}</Button>
 
-        <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink} sx={{width:'100%', mb:2}}>{buyButtonText}</Button>
-
+            <Snackbar open={open} anchorOrigin={{horizontal: 'center', vertical: 'bottom'}}
+            >
+                <Alert severity="error">
+                    {snackbarText}
+                </Alert>
+            </Snackbar>
+        </>
     )
 }
 
@@ -36,3 +58,4 @@ async function createCheckout() {
 
     return await storefront(checkoutCreateMutation, variables)
 }
+

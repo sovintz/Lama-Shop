@@ -33,6 +33,9 @@ export interface DescriptionsType {
     guarantees?: GuaranteeObject[];
     faqTitle?: string;
     faqs?: FaqObject[];
+    errorMessages?: {
+        noCheckout: string;
+    }
 }
 
 const test = {
