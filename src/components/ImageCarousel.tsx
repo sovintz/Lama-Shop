@@ -1,21 +1,31 @@
 "use client"
-import React from "react";
+import React, {useEffect} from "react";
 import {Box} from "@mui/system";
 import {Button, MobileStepper} from "@mui/material";
 import {KeyboardArrowLeft, KeyboardArrowRight} from '@mui/icons-material';
 import {useSwipeable} from "react-swipeable";
 import Image from "next/image";
+import {useProductStore} from "@/stores/productStore";
 
 export default function ImageCarousel({raw_images} : any) {
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = raw_images.length;
 
-    const images = raw_images.map((cur_img : any) => {
+    const images = raw_images.slice(3).map((cur_img : any) => {
         return {
             imgPath: cur_img.node.url,
             alt: cur_img.node.altText,
         }
     })
+
+    const maxSteps = images.length;
+
+    const numOfVariants = useProductStore(state => state.product.variants.edges.length)
+    const selectedIndex = useProductStore(state => state.variantIndex)
+    useEffect(() => {setActiveStep(images.length - (numOfVariants - selectedIndex))}, [selectedIndex])
+
+    useEffect(() => {
+        setActiveStep(0)
+    }, []);
 
     const handlers = useSwipeable({
         onSwipedLeft: () => handleNext(),

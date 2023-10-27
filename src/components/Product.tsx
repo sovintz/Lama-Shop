@@ -5,13 +5,12 @@ import CheckoutCreate from "@/components/checkoutCreate";
 import QuantityInput from "@/components/QuantityInput";
 import AmountCalculator from "@/components/AmountCalculator";
 import {ExpandMoreOutlined} from '@mui/icons-material'
-import {DescriptionsType} from "@/utils/types";
+import {DescriptionsType, ProductType} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
 
 
-export default function Product({product_data}: any) {
+export default function Product({ product }: { product: ProductType }) {
 
-    const {product} = product_data
     const {
         productDescription,
         productSpecifications,

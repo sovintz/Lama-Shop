@@ -38,25 +38,43 @@ export interface DescriptionsType {
     }
 }
 
-const test = {
-    "mainTitle": "The Best Product",
-    "callToActionButtonText": "Discover More",
-    "marketingTitle": "Marketing",
-    "marketingDescription1": "marketing description1",
-    "marketingDescription2": "marketing description2",
-    "productDescription": "product description",
-    "amountText": "Amount",
-    "buyButtonText": "Buy",
-    "specificationsTitle": "Specifications",
-    "productSpecifications": "This are the product specifications",
-    "guarantees": [
-        {"text": "No Compromises in Quality"},
-        {"text": "100% Satisfaction Guarantee"},
-        {"text": "Free Worldwide Shipping"}
-    ],
-    "faqTitle": "Frequently Asked Questions",
-    "faqs": [
-        {"question": "How long does shipping take", "answer": "3 weeks"},
-        {"question": "Q2", "answer": "A2"}
-    ]
+export interface ProductType {
+    title: string;
+    description: string;
+    updatedAt: string;
+    priceRange: {
+        minVariantPrice: {
+            amount: string;
+        };
+    };
+    variants: {
+        edges: {
+            node: {
+                id: string;
+                image: {
+                    url: string;
+                    altText: string;
+                };
+                price: {
+                    amount: string;
+                };
+                compareAtPrice: {
+                    amount: string;
+                };
+                selectedOptions: {
+                    name: string;
+                    value: string;
+                }[];
+            };
+        }[];
+    };
+    images: {
+        edges: {
+            node: {
+                url: string;
+                altText: string;
+            };
+        }[];
+    };
+
 }

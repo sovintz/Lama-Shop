@@ -23,7 +23,9 @@ export default function VariantSelector({raw_variants}: any) {
     const handleVariantChange = (step: number) => {
         setActiveVariant(step);
         useProductStore.getState().setVariant(variants[step].id)
+        useProductStore.getState().setVariantIndex(step)
     };
+
 
     useEffect(() => {handleVariantChange(0)}, [])
 

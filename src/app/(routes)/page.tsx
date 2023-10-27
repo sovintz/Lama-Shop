@@ -10,18 +10,10 @@ import Guarantees from "@/components/Guarantees";
 import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
 import pageDict from "@/utils/pageConfig";
-import {DescriptionsType} from "@/utils/types";
+import {DescriptionsType, ProductType} from "@/utils/types";
 import {Container} from "@mui/material";
+import StoreInitializer from "@/components/StoreInitializer";
 
-
-const fallbackDescription = {
-    "mainTitle": "The Best Product",
-    "marketingTitle": "Marketing Title",
-    "marketingDescription1": "marketing description1",
-    "marketingDescription2": "marketing description2",
-    "productDescription": "Product description",
-    "productSpecifications": "This are the product specifications"
-}
 
 export default async function Home() {
 
@@ -33,27 +25,23 @@ export default async function Home() {
 
     await useProductStore.getState().setProductID(productId)
     await useProductStore.getState().setProduct()
-    const data: any = useProductStore.getState().product
+    const product:ProductType = useProductStore.getState().product
 
-    //console.log("data", data)
-    //console.log("productId", useProductStore.getState().productID)
-
-    const descriptionJSON: DescriptionsType = JSON.parse(data.product.description)
-    const images = data.product.images.edges
-    //console.log(images)
+    const descriptionJSON: DescriptionsType = JSON.parse(product.description)
+    const images = product.images.edges
 
     await useProductStore.getState().setDescriptions(descriptionJSON)
 
 
     return (
         <main>
+            <StoreInitializer product={product}/>
 
             <Header image={images[0].node}/>
 
             <Container maxWidth="lg">
-                {/*TODO marketing images add from index 2*/}
-                <Marketing images={[images[1].node, images[0].node]}/>
-                <Product product_data={data}/>
+                <Marketing images={[images[1].node, images[2].node]}/>
+                <Product product={product}/>
                 <Guarantees/>
                 <FAQ/>
             </Container>
