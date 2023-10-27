@@ -1,5 +1,5 @@
 import type {Metadata} from 'next'
-import '../globals.css'
+import './globals.css'
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import NavBar from "@/components/NavBar";
