@@ -30,7 +30,7 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
 
     return (
         <>
-            <Button variant="contained" disabled={!variantSelected} onClick={createCheckoutLink}
+            <Button variant="contained" size={"large"} disabled={!variantSelected} onClick={createCheckoutLink}
                     sx={{width: '100%', mb: 2}}>{buyButtonText}</Button>
 
             <Snackbar open={open} anchorOrigin={{horizontal: 'center', vertical: 'bottom'}}
