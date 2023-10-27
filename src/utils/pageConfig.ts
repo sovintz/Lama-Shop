@@ -8,7 +8,7 @@ type PageDictionary = {
 const pageDict:PageDictionary = {
     'test.localhost:3000': {
         productId: 'gid://shopify/Product/8621599228232',
-        theme: 'themeBlue'
+        theme: 'themeOrange'
     },
     'test2.localhost:3000': {
         productId: 'gid://shopify/Product/8621599228232',

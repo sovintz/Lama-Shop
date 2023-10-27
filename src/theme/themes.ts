@@ -82,6 +82,50 @@ const themeRed = createTheme({
     // Add other theme customization here
 });
 
+const themeOrange = createTheme({
+    typography: {
+        fontFamily: poppins.style.fontFamily,
+        button: {
+            textTransform: "none"
+        }
+    },
+    palette: {
+        mode: 'light',
+        primary: {
+            main: '#FFC700',
+            light: '#FFEBAF',
+            dark: '#FFB000',
+        },
+        secondary: {
+            main: '#00ffff',
+        },
+        background: {
+            default: '#F7F7F9',
+        },
+        text: {
+            primary: '#000000',
+            secondary: '#757575', // gray text
+        }
+
+
+    },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    borderRadius: 12,
+                },
+            }
+        },
+        MuiAccordion:{
+            defaultProps: {
+                elevation: 0,
+            }
+        },
+    }
+    // Add other theme customization here
+});
+
 type ThemeDictionaryClient = {
     [theme: string]: Theme
 };
@@ -89,7 +133,8 @@ type ThemeDictionaryClient = {
 const themeDictClient: ThemeDictionaryClient = {
     'themeBlue': themeBlue,
     'themeRed': themeRed,
+    'themeOrange': themeOrange,
 }
 
 export default themeDictClient
-export { themeBlue, themeRed};
+export { themeBlue, themeRed, themeOrange};
