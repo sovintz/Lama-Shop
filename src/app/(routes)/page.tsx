@@ -28,15 +28,15 @@ export default async function Home() {
     const headersList = headers();
     const hostname = headersList.get('host') ?? 'test.localhost:3000'
     const productId = pageDict[hostname].productId
-    console.log(productId)
+    //console.log(productId)
     //const productId = "gid://shopify/Product/8621599228232"
 
     await useProductStore.getState().setProductID(productId)
     await useProductStore.getState().setProduct()
     const data: any = useProductStore.getState().product
 
-    console.log("data", data)
-    console.log("productId", useProductStore.getState().productID)
+    //console.log("data", data)
+    //console.log("productId", useProductStore.getState().productID)
 
     const descriptionJSON: DescriptionsType = JSON.parse(data.product.description)
     const images = data.product.images.edges

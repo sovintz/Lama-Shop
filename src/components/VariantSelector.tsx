@@ -51,15 +51,16 @@ export default function VariantSelector({raw_variants}: any) {
                                 left: 0,
                                 width: '100%',
                                 height: '100%',
+                                zIndex:50,
                                 backgroundColor: activeVariant === index ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                                 pointerEvents: 'none', // Allow click through
                             }}
                         />
                         <Image src={variant.imgSrc}
-                               width={60}
-                               height={60}
+                               width={55}
+                               height={55}
                                alt={`Product variant ${index}`}
-
+                               style={{margin: 5}}
                         />
                     </Box>
 
