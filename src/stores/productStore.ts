@@ -8,10 +8,12 @@ interface ProductState {
     productID: string
     variant: string
     variantIndex: number
+    variantClicked: boolean
     quantity: number
     descriptions: DescriptionsType
     setVariant: (variant: string) => void
     setVariantIndex: (variantIndex: number) => void
+    setVariantClicked: (variantClicked: boolean) => void
     setQuantity: (quantity: number) => void
     setProduct: () => void
     setProductID: (productID: string) => void
@@ -24,6 +26,8 @@ export const useProductStore = create<ProductState>((set, get) => ({
 
     variantIndex: 0,
     setVariantIndex: (newVariantIndex: number) => set(() => ({ variantIndex: newVariantIndex })),
+    variantClicked: false,
+    setVariantClicked: (newVariantClicked: boolean) => set(() => ({ variantClicked: newVariantClicked })),
 
     quantity: 1,
     setQuantity: (newQuantity: number) => set(() => ({ quantity: newQuantity })),

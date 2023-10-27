@@ -20,7 +20,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <body>
         <GoogleAnalytics/>
         <ThemeRegistry options={{key: 'mui'}} hostname={hostname}>
+{/*
             <NavBar/>
+*/}
 
             {children}
 

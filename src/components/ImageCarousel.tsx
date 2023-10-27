@@ -21,11 +21,13 @@ export default function ImageCarousel({raw_images} : any) {
 
     const numOfVariants = useProductStore(state => state.product.variants.edges.length)
     const selectedIndex = useProductStore(state => state.variantIndex)
-    useEffect(() => {setActiveStep(images.length - (numOfVariants - selectedIndex))}, [selectedIndex])
-
-    useEffect(() => {
-        setActiveStep(0)
-    }, []);
+    const variantClicked = useProductStore(state => state.variantClicked)
+    useEffect( () => {
+        if(variantClicked) {
+            useProductStore.getState().setVariantClicked(false)
+            setActiveStep(images.length - (numOfVariants - selectedIndex))
+        }
+    }, [variantClicked])
 
     const handlers = useSwipeable({
         onSwipedLeft: () => handleNext(),
