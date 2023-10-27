@@ -51,7 +51,8 @@ export default async function Home() {
             <Header image={images[0].node}/>
 
             <Container maxWidth="lg">
-                <Marketing image={images[1].node}/>
+                {/*TODO marketing images add from index 2*/}
+                <Marketing images={[images[1].node, images[0].node]}/>
                 <Product product_data={data}/>
                 <Guarantees/>
                 <FAQ/>

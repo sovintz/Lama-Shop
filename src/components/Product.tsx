@@ -23,7 +23,7 @@ export default function Product({product_data}: any) {
 
 
     return (
-        <Grid container>
+        <Grid container spacing={3}>
 
             <Grid item xs={12} justifyContent={"start"}>
                 <Typography variant="h4" component="h2" align="left" id="scrollToId">

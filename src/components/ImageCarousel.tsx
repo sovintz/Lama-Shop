@@ -41,7 +41,7 @@ export default function ImageCarousel({raw_images} : any) {
     };
 
     return (
-        <Box sx={{ flexGrow: 1, pr:{md:4} }} {...handlers}>
+        <Box sx={{ flexGrow: 1}} {...handlers}>
 
             {images.map((cur_img: any, index: number) => (
                 <div key={index}>
