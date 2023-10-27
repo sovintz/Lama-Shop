@@ -21,7 +21,11 @@ const pageDict:PageDictionary = {
     'test2.lamashop.eu': {
         productId: 'gid://shopify/Product/8621599228232',
         theme: 'themeRed'
-    }
+    },
+    'lumikitty.lamashop.eu': {
+        productId: 'gid://shopify/Product/8621599228232',
+        theme: 'themeOrange'
+    },
 }
 
 //export const fallbackDomain = 'https://test.lamashop.eu'
