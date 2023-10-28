@@ -6,7 +6,12 @@ const nextConfig = {
     async redirects() {
         return [
             {
-                source: '/:path(^(?!images/).*)',
+                source: '/images/*',
+                destination: '/images/*',
+                permanent: true,
+            },
+            {
+                source: '/:path',
                 destination: '/',
                 permanent: true,
             },
