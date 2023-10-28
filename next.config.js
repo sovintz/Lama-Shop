@@ -3,10 +3,10 @@ const nextConfig = {
     images: {
         domains: ['cdn.shopify.com'],
     },
-    /*async redirects() {
+    async redirects() {
         return [
             {
-                source: '/:path',
+                source: '/:path(^(?!images/).*)',
                 destination: '/',
                 permanent: true,
             },
@@ -16,7 +16,7 @@ const nextConfig = {
                 permanent: true,
             }
         ]
-    },*/
+    },
 }
 
 module.exports = nextConfig
