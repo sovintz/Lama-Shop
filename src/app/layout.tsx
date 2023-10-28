@@ -2,7 +2,6 @@ import type {Metadata} from 'next'
 import './globals.css'
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import {headers} from "next/headers";
 
@@ -20,12 +19,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
         <body>
         <GoogleAnalytics/>
         <ThemeRegistry options={{key: 'mui'}} hostname={hostname}>
-{/*
-            <NavBar/>
-*/}
-
             {children}
-
             <Footer/>
         </ThemeRegistry>
         </body>
