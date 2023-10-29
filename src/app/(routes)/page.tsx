@@ -40,7 +40,7 @@ export default async function Home() {
             <Header image={images[0].node}/>
 
             <Container maxWidth="lg">
-                <Marketing images={[images[1].node, images[2].node]}/>
+                <Marketing images={images.slice(1)}/>
                 <Product product={product}/>
                 <Guarantees/>
                 <FAQ/>

@@ -62,7 +62,7 @@ export default function ImageCarousel({raw_images} : any) {
                             width={1000}
                             height={1000}
                             style={{
-                                objectFit: "contain",
+                                objectFit: "cover",
                                 top: 0,
                                 right: 0,
                                 zIndex: 0,
