@@ -20,20 +20,21 @@ export interface FaqObject {
 }
 
 export interface DescriptionsType {
-    mainTitle?: string;
-    callToActionButtonText?: string;
-    marketingTitle?: string;
-    marketingDescription1?: string;
-    marketingDescription2?: string;
-    productDescription?: string;
-    amountText?: string;
-    buyButtonText?: string;
-    specificationsTitle?: string;
-    productSpecifications?: string;
-    guarantees?: GuaranteeObject[];
-    faqTitle?: string;
-    faqs?: FaqObject[];
-    errorMessages?: {
+    mainTitle: string;
+    callToActionButtonText: string;
+    marketingTitle1: string;
+    marketingTitle2: string;
+    marketingDescription1: string;
+    marketingDescription2: string;
+    productDescription: string;
+    amountText: string;
+    buyButtonText: string;
+    specificationsTitle: string;
+    productSpecifications: string;
+    guarantees: GuaranteeObject[];
+    faqTitle: string;
+    faqs: FaqObject[];
+    errorMessages: {
         noCheckout: string;
     }
 }

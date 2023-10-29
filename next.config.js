@@ -5,17 +5,16 @@ const nextConfig = {
     },
     async redirects() {
         return [
-            // TODO: exclude /images/* from redirects
             {
-                source: '/:path',
-                destination: '/',
-                permanent: true,
+                source: '/_not-found', // Capture any path
+                destination: '/', // Redirect to the root path
+                permanent: true, // Set to true for a permanent redirect (301)
             },
             {
-                source: '/:path1/:path2*',
-                destination: '/',
-                permanent: true,
-            }
+                source: '/:any/:any*', // Capture any path
+                destination: '/', // Redirect to the root path
+                permanent: true, // Set to true for a permanent redirect (301)
+            },
         ]
     },
 }

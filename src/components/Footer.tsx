@@ -11,10 +11,9 @@ const bebasNeue = Bebas_Neue({
 
 export default function Footer() {
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{p:2}}>
             <Typography variant="body2" component="div" align="center">Powered by</Typography>
-            <Toolbar sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <Box sx={{display: "flex", alignItems: "center"}}>
+                <Box sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <Typography variant="h6" component="div" align="center" fontSize={25} fontFamily={bebasNeue.style.fontFamily}>Lama</Typography>
                     <Image
                         src="/images/logo.png"
@@ -24,7 +23,6 @@ export default function Footer() {
                     />
                     <Typography variant="h6" component="div" align="center" fontSize={25} fontFamily={bebasNeue.style.fontFamily}>Shop</Typography>
                 </Box>
-            </Toolbar>
             <Typography variant="body2" align="center" sx={{flexGrow: 1}}>
                 &copy; {new Date().getFullYear()}
             </Typography>
