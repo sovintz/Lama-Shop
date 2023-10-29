@@ -16,6 +16,6 @@ export default function CallToActionButton({ callToActionButtonText }: { callToA
     };
 
     return (
-        <Button variant={"contained"} size={"large"} sx={{mt: 3}} onClick={goTo}>{callToActionButtonText}</Button>
+        <Button variant={"contained"} size={"large"} sx={{mt: 2}} onClick={goTo}>{callToActionButtonText}</Button>
     )
 }

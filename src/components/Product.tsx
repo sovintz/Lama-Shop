@@ -5,8 +5,9 @@ import CheckoutCreate from "@/components/checkoutCreate";
 import QuantityInput from "@/components/QuantityInput";
 import AmountCalculator from "@/components/AmountCalculator";
 import {ExpandMoreOutlined} from '@mui/icons-material'
-import {DescriptionsType, ProductType} from "@/utils/types";
+import {DescriptionsType, ProductType, SpecificationEntry} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
+import {Box} from "@mui/system";
 
 
 export default function Product({ product }: { product: ProductType }) {
@@ -61,8 +62,7 @@ export default function Product({ product }: { product: ProductType }) {
                     </Grid>
 
                     <Grid item xs={12} sx={{mb: 2}} order={{xs:3, md:1}}>
-                        <Typography variant="body1" align="left">
-                            {productDescription}
+                        <Typography variant="body1" align="justify" dangerouslySetInnerHTML={{__html: productDescription}}>
                         </Typography>
                     </Grid>
 
@@ -76,9 +76,16 @@ export default function Product({ product }: { product: ProductType }) {
                                 <Typography>{specificationsTitle}</Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <Typography>
-                                    {productSpecifications}
-                                </Typography>
+                                {productSpecifications.map((entry: SpecificationEntry, index: number) => (
+                                    <Box key={index} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                        <Typography variant={'subtitle2'} fontWeight="bold" align={'left'} fontSize={'small'}>
+                                            {entry.title}<span>:&nbsp;</span>
+                                        </Typography>
+                                        <Typography variant={'body2'} align={'left'} fontSize={'small'}>
+                                            {entry.value}
+                                        </Typography>
+                                    </Box>
+                                ))}
                             </AccordionDetails>
                         </Accordion>
                     </Grid>

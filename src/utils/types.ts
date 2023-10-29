@@ -14,6 +14,10 @@ export interface MarketingText {
     title: string;
     description: string;
 }
+export interface SpecificationEntry {
+    title: string;
+    value: string;
+}
 
 export interface GuaranteeObject {
     text: string;
@@ -33,7 +37,7 @@ export interface DescriptionsType {
     amountText: string;
     buyButtonText: string;
     specificationsTitle: string;
-    productSpecifications: string;
+    productSpecifications: SpecificationEntry[];
     guarantees: GuaranteeObject[];
     faqTitle: string;
     faqs: FaqObject[];
