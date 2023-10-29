@@ -10,6 +10,11 @@ export interface Variant {
     selectedOptions: SelectedOptions
 }
 
+export interface MarketingText {
+    title: string;
+    description: string;
+}
+
 export interface GuaranteeObject {
     text: string;
 }
@@ -21,11 +26,9 @@ export interface FaqObject {
 
 export interface DescriptionsType {
     mainTitle: string;
+    subtitle: string;
     callToActionButtonText: string;
-    marketingTitle1: string;
-    marketingTitle2: string;
-    marketingDescription1: string;
-    marketingDescription2: string;
+    marketingTexts: MarketingText[];
     productDescription: string;
     amountText: string;
     buyButtonText: string;
