@@ -10,7 +10,9 @@ import {useProductStore} from "@/stores/productStore";
 export default function ImageCarousel({raw_images} : any) {
     const [activeStep, setActiveStep] = React.useState(0);
 
-    const images = raw_images.slice(3).map((cur_img : any) => {
+    const numOfMarketingTexts = useProductStore(state => state.descriptions.marketingTexts.length)
+
+    const images = raw_images.slice(numOfMarketingTexts + 1).map((cur_img : any) => {
         return {
             imgPath: cur_img.node.url,
             alt: cur_img.node.altText,

@@ -35,7 +35,7 @@ export default async function Home() {
 
     return (
         <main>
-            <StoreInitializer product={product}/>
+            <StoreInitializer product={product} descriptions={descriptionJSON}/>
 
             <Header image={images[0].node}/>
 
