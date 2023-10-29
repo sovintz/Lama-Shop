@@ -29,7 +29,7 @@ export default function Header({image}:Props) {
                        zIndex:0,
                    }}
             />
-            <Grid container zIndex={20} sx={{height: '100vh'}}>
+            <Grid container zIndex={20} sx={{position: "absolute", top: "25%"}}>
                 <Grid item xs={12} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                     <Typography variant={'h2'} component={'h1'} align={'center'}>
                         {mainTitle}

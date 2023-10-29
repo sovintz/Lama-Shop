@@ -19,7 +19,10 @@ export default function Marketing({images}:Props) {
     return (
         <Grid container sx={{py:2}} spacing={{ xs: 2, md: 3 }}>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{display: "flex", flexDirection: "column",justifyContent: "center", alignItems: "center"}}>
+                <Typography variant="h4" component="h2" align="left">
+                    {marketingTitle}
+                </Typography>
                 <Typography variant="body1" align="left">
                     {marketingDescription1}
                 </Typography>
@@ -44,12 +47,6 @@ export default function Marketing({images}:Props) {
                 />
             </Grid>
 
-            <Grid item xs={12}>
-                <Typography variant="h4" component="h2" align="left">
-                    {marketingTitle}
-                </Typography>
-            </Grid>
-
             <Grid item xs={12} md={6}>
 
                 <Image
@@ -69,7 +66,10 @@ export default function Marketing({images}:Props) {
                 />
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{display: "flex", flexDirection: "column",justifyContent: "center", alignItems: "center"}}>
+                <Typography variant="h4" component="h2" align="left">
+                    {marketingTitle}
+                </Typography>
                 <Typography variant="body1" align="left">
                     {marketingDescription2}
                 </Typography>
