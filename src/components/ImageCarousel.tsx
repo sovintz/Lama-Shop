@@ -7,12 +7,12 @@ import {useSwipeable} from "react-swipeable";
 import Image from "next/image";
 import {useProductStore} from "@/stores/productStore";
 
-export default function ImageCarousel({raw_images} : any) {
+export default function ImageCarousel({raw_images}: any) {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const numOfMarketingTexts = useProductStore(state => state.descriptions.marketingTexts.length)
 
-    const images = raw_images.slice(numOfMarketingTexts + 1).map((cur_img : any) => {
+    const images = raw_images.slice(numOfMarketingTexts + 1).map((cur_img: any) => {
         return {
             imgPath: cur_img.node.url,
             alt: cur_img.node.altText,
@@ -24,8 +24,8 @@ export default function ImageCarousel({raw_images} : any) {
     const numOfVariants = useProductStore(state => state.product.variants.edges.length)
     const selectedIndex = useProductStore(state => state.variantIndex)
     const variantClicked = useProductStore(state => state.variantClicked)
-    useEffect( () => {
-        if(variantClicked) {
+    useEffect(() => {
+        if (variantClicked) {
             useProductStore.getState().setVariantClicked(false)
             setActiveStep(images.length - (numOfVariants - selectedIndex))
         }
@@ -39,14 +39,14 @@ export default function ImageCarousel({raw_images} : any) {
     const handleNext = () => {
         setActiveStep((prevActiveStep) => {
             const nextStep = prevActiveStep + 1;
-            return nextStep >= maxSteps ? maxSteps - 1 : nextStep;
+            return nextStep >= maxSteps ? 0 : nextStep;
         });
     };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => {
             const nextStep = prevActiveStep - 1;
-            return nextStep <= 0 ? 0 : nextStep;
+            return nextStep < 0 ? maxSteps - 1 : nextStep;
         });
     };
 
@@ -55,7 +55,7 @@ export default function ImageCarousel({raw_images} : any) {
     };
 
     return (
-        <Box sx={{ flexGrow: 1}} {...handlers}>
+        <Box sx={{flexGrow: 1}} {...handlers}>
 
             {images.map((cur_img: any, index: number) => (
                 <div key={index}>
@@ -70,7 +70,7 @@ export default function ImageCarousel({raw_images} : any) {
                                 zIndex: 0,
                                 width: '100%',
                                 height: '100%',
-                                borderRadius:16,
+                                borderRadius: 16,
                             }}
                             src={cur_img.imgPath}
                             alt={cur_img.alt}
@@ -88,13 +88,13 @@ export default function ImageCarousel({raw_images} : any) {
                     <Button
                         size="small"
                         onClick={handleNext}
-                        disabled={activeStep === maxSteps - 1}
+
                     >
                         < KeyboardArrowRight/>
                     </Button>
                 }
                 backButton={
-                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                    <Button size="small" onClick={handleBack} >
                         < KeyboardArrowLeft/>
                     </Button>
                 }/>
