@@ -27,11 +27,12 @@ export default async function Home() {
     await useProductStore.getState().setProduct()
     const product:ProductType = useProductStore.getState().product
 
-    const descriptionJSON: DescriptionsType = JSON.parse(product.description)
+    console.log(product)
+
+    const descriptionJSON: DescriptionsType = JSON.parse(product.descriptionHtml)
     const images = product.images.edges
 
     await useProductStore.getState().setDescriptions(descriptionJSON)
-
 
     return (
         <main>

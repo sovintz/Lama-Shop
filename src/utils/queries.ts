@@ -3,7 +3,7 @@ const productQuery: string = gql`
      query SingleProduct($product_id: ID) {
        product(id: $product_id) {
          title
-         description
+         descriptionHtml
          updatedAt
          priceRange {
            minVariantPrice {

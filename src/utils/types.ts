@@ -48,7 +48,7 @@ export interface DescriptionsType {
 
 export interface ProductType {
     title: string;
-    description: string;
+    descriptionHtml: string;
     updatedAt: string;
     priceRange: {
         minVariantPrice: {

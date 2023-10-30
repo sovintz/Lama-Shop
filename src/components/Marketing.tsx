@@ -35,7 +35,7 @@ export default function Marketing({images}: Props) {
             {(marketingTexts.map((item, index) => (
                 <>
 
-                    <Grid item xs={12} md={6} order={order(index, 1)}>
+                    <Grid item xs={12} md={6} order={order(index, 1)} key={index}>
 
                         <Image
                             width={1000}

@@ -9,7 +9,6 @@ import {DescriptionsType, ProductType, SpecificationEntry} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
 import {Box} from "@mui/system";
 
-
 export default function Product({ product }: { product: ProductType }) {
 
     const {
@@ -21,6 +20,7 @@ export default function Product({ product }: { product: ProductType }) {
         errorMessages,
     }: DescriptionsType = useProductStore.getState().descriptions
 
+    console.log(productDescription)
 
     return (
         <Grid container spacing={3}>
@@ -62,8 +62,7 @@ export default function Product({ product }: { product: ProductType }) {
                     </Grid>
 
                     <Grid item xs={12} sx={{mb: 2}} order={{xs:3, md:1}}>
-                        <Typography variant="body1" align="justify" dangerouslySetInnerHTML={{__html: productDescription}}>
-                        </Typography>
+                        <Typography variant="body1" align="justify" dangerouslySetInnerHTML={{ __html: productDescription}}/>
                     </Grid>
 
                     <Grid item xs={12} order={{xs:4, md:4}}>

@@ -1,11 +1,16 @@
-import Link from 'next/link'
+"use client"
 import {Avatar, Grid, Typography} from "@mui/material";
 import Image from "next/image";
-import React from "react";
-import {redirect} from "next/navigation";
+import React, {useEffect} from "react";
+import {useRouter} from "next/navigation";
 
 export default function NotFound() {
 
+    const router = useRouter()
+
+    useEffect(() => {
+        router.replace('/')
+    })
     return (
         <main>
             <Grid container sx={{height: '100vh'}} alignItems={"center"} justifyContent={"center"} direction="column">
