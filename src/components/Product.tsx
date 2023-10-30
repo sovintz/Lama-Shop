@@ -20,8 +20,6 @@ export default function Product({ product }: { product: ProductType }) {
         errorMessages,
     }: DescriptionsType = useProductStore.getState().descriptions
 
-    console.log(productDescription)
-
     return (
         <Grid container spacing={3}>
 

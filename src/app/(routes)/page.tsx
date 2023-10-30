@@ -15,42 +15,30 @@ import {Container} from "@mui/material";
 import StoreInitializer from "@/components/StoreInitializer";
 import {Metadata, ResolvingMetadata} from "next";
 
-type Props = {
-    title: string,
-    description: string,
+export async function generateMetadata(): Promise<Metadata> {
+
+    const descriptionJSON = await useProductStore.getState().descriptions
+
+    return {
+        title: descriptionJSON.mainTitle,
+        description: descriptionJSON.subtitle,
+    }
 }
 
-export async function generateMetadata(
-
-): Promise<Metadata> {
-
+export default async function Home() {
     const headersList = headers();
     const hostname = headersList.get('host') ?? 'test.localhost:3000'
     const productId = pageDict[hostname].productId
 
     await useProductStore.getState().setProductID(productId)
-    await useProductStore.getState().setProduct()
-    const product:ProductType = useProductStore.getState().product
 
+    await useProductStore.getState().setProduct()
+    const product: ProductType = useProductStore.getState().product
     const descriptionJSON: DescriptionsType = JSON.parse(product.descriptionHtml)
 
     await useProductStore.getState().setDescriptions(descriptionJSON)
 
-    return {
-        title: descriptionJSON.mainTitle,
-        description: "description",
-    }
-}
-
-export default async function Home() {
-
-
-    //console.log(productId)
-    //const productId = "gid://shopify/Product/8621599228232"
-    const product = useProductStore.getState().product
-    const descriptionJSON = useProductStore.getState().descriptions
     const images = product.images.edges
-
 
     return (
         <main>

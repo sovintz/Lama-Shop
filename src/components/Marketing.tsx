@@ -33,9 +33,9 @@ export default function Marketing({images}: Props) {
         <Grid container sx={{py: 2}} spacing={{xs: 2, md: 3}}>
 
             {(marketingTexts.map((item, index) => (
-                <>
+                <div key={index}>
 
-                    <Grid item xs={12} md={6} order={order(index, 1)} key={index}>
+                    <Grid item xs={12} md={6} order={order(index, 1)} >
 
                         <Image
                             width={1000}
@@ -71,7 +71,7 @@ export default function Marketing({images}: Props) {
                     </Grid>
 
 
-                </>
+                </div>
             )))}
 
         </Grid>
