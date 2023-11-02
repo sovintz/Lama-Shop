@@ -26,7 +26,6 @@ export default function NotFound() {
                                 zIndex: 0,
                                 width: '70%',
                                 height: '70%',
-                                borderRadius: 16,
                             }}
                             src="/images/logo.png"
                             alt="logo"
