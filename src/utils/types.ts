@@ -1,13 +1,20 @@
-export interface SelectedOptions {
-    name: string,
-    value: string
-}
 
-export interface Variant {
-    id: string,
-    imgSrc: string,
-    price: string,
-    selectedOptions: SelectedOptions
+export interface Variant{
+    id: string;
+    image: {
+        url: string;
+        altText: string;
+    };
+    price: {
+        amount: string;
+    };
+    compareAtPrice: {
+        amount: string;
+    };
+    selectedOptions: {
+        name: string;
+        value: string;
+    }[];
 }
 
 export interface MarketingText {
@@ -57,23 +64,7 @@ export interface ProductType {
     };
     variants: {
         edges: {
-            node: {
-                id: string;
-                image: {
-                    url: string;
-                    altText: string;
-                };
-                price: {
-                    amount: string;
-                };
-                compareAtPrice: {
-                    amount: string;
-                };
-                selectedOptions: {
-                    name: string;
-                    value: string;
-                }[];
-            };
+            node: Variant
         }[];
     };
     media: {

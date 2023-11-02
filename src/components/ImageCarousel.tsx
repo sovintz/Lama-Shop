@@ -14,10 +14,6 @@ interface Props {
     }[]
 }
 
-interface FilterType {
-    node: ImageContent | VideoContent
-}
-
 export default function ImageCarousel({raw_media}: Props) {
     const [activeStep, setActiveStep] = React.useState(0);
 
@@ -31,8 +27,8 @@ export default function ImageCarousel({raw_media}: Props) {
         } => cur_media.node.mediaContentType === 'IMAGE')
         .map((cur_media: { node: ImageContent }) => {
             return {
-                imgPath: cur_media.node.image.url,
-                alt: cur_media.node.image.altText,
+                url: cur_media.node.image.url,
+                altText: cur_media.node.image.altText,
             }
         })
 
@@ -74,7 +70,7 @@ export default function ImageCarousel({raw_media}: Props) {
     return (
         <Box sx={{flexGrow: 1}} {...handlers}>
 
-            {images.map((cur_img: any, index: number) => (
+            {images.map((cur_img: ImageContent["image"], index: number) => (
                 <div key={index}>
                     {activeStep === index && (
                         <Image
@@ -89,8 +85,8 @@ export default function ImageCarousel({raw_media}: Props) {
                                 height: '100%',
                                 borderRadius: 16,
                             }}
-                            src={cur_img.imgPath}
-                            alt={cur_img.alt}
+                            src={cur_img.url}
+                            alt={cur_img.altText}
                         />
 
                     )}

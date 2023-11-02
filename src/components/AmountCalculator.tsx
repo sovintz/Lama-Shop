@@ -7,15 +7,28 @@ import {Box} from "@mui/system";
 
 interface Props {
     defaultAmount: string
-    raw_variants: object[]
+    raw_variants: {
+        node: Variant
+    }[]
+}
+
+interface LocalVariant {
+    id: string,
+    imgSrc: string,
+    price: string,
+    prevPrice: string,
+    selectedOptions: {
+        name: string,
+        value: string
+    }
 }
 
 export default function AmountCalculator({defaultAmount, raw_variants}: Props) {
 
-    const [varAmount, setVarAmount] = useState(Number(defaultAmount));
-    const [varPrevAmount, setVarPrevAmount] = useState(Number(defaultAmount));
+    const [varAmount, setVarAmount] = useState(defaultAmount);
+    const [varPrevAmount, setVarPrevAmount] = useState(defaultAmount);
 
-    const variants = raw_variants.map((cur_variant: any) => {
+    const variants:LocalVariant[] = raw_variants.map((cur_variant: { node:Variant } ) => {
         return {
             id: cur_variant.node.id,
             imgSrc: cur_variant.node.image.url,
@@ -29,9 +42,9 @@ export default function AmountCalculator({defaultAmount, raw_variants}: Props) {
 
     useEffect(() => {
 
-        const variant = variants.find((variant: Variant) => variant.id === variant_id)
-        setVarAmount(variant ? variant.price : Number(defaultAmount))
-        setVarPrevAmount(variant ? variant.prevPrice : Number(defaultAmount))
+        const variant = variants.find((variant: LocalVariant) => variant.id === variant_id)
+        setVarAmount(variant ? variant.price : defaultAmount)
+        setVarPrevAmount(variant ? variant.prevPrice : defaultAmount)
 
     }, [variant_id]);
 

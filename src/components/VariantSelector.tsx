@@ -7,11 +7,26 @@ import React, {useEffect} from "react";
 import {useProductStore} from "@/stores/productStore";
 import {Variant} from "@/utils/types";
 
-export default function VariantSelector({raw_variants}: any) {
+interface Props {
+    raw_variants: {
+        node: Variant
+    }[]
+}
+ interface LocalVariant {
+    id: string,
+    imgSrc: string,
+    price: string,
+    selectedOptions: {
+        name: string,
+        value: string
+    }
+}
+
+export default function VariantSelector({raw_variants}: Props) {
 
     const [activeVariant, setActiveVariant] = React.useState(0);
 
-    const variants = raw_variants.map((cur_variant: any) => {
+    const variants = raw_variants.map((cur_variant: {node:Variant}) => {
         return {
             id: cur_variant.node.id,
             imgSrc: cur_variant.node.image.url,
@@ -32,25 +47,27 @@ export default function VariantSelector({raw_variants}: any) {
     };
 
 
-    useEffect(() => {changeVariant(0)}, [])
+    useEffect(() => {
+        changeVariant(0)
+    }, [])
 
 
     return (
         <Grid container spacing={2} mb={2}>
-            {variants.map((variant:Variant , index: number) => (
+            {variants.map((variant: LocalVariant, index: number) => (
                 <Grid item key={index}>
                     <Box onClick={() => handleVariantChange(index)}
-                        sx={{
-                            overflow: 'hidden',
-                            borderRadius: 4,
-                            position: 'relative',
-                            backgroundColor: 'white',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            p:0.7,
-                            cursor: 'pointer',
-                        }}
+                         sx={{
+                             overflow: 'hidden',
+                             borderRadius: 4,
+                             position: 'relative',
+                             backgroundColor: 'white',
+                             display: 'flex',
+                             justifyContent: 'center',
+                             alignItems: 'center',
+                             p: 0.7,
+                             cursor: 'pointer',
+                         }}
                     >
                         <Box
                             sx={{
@@ -59,7 +76,7 @@ export default function VariantSelector({raw_variants}: any) {
                                 left: 0,
                                 width: '100%',
                                 height: '100%',
-                                zIndex:50,
+                                zIndex: 50,
                                 backgroundColor: activeVariant === index ? 'rgba(0, 0, 0, 0.1)' : 'transparent',
                                 pointerEvents: 'none', // Allow click through
                             }}
