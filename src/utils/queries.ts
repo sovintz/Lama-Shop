@@ -10,7 +10,7 @@ const productQuery: string = gql`
              amount
            }
          }
-         variants(first: 5) {
+         variants(first: 10) {
            edges {
              node {
                id
@@ -31,7 +31,7 @@ const productQuery: string = gql`
              }
            }
          }
-         images(first: 10) {
+         images(first: 20) {
            edges {
              node {
                url
