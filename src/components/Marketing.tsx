@@ -27,7 +27,7 @@ export default function Marketing({images}: Props) {
         const xs = 1 + num;
         const md = index % 2 === 0 ? 1 + num : 2 + num;
 
-        return position === 1 ? { xs, md } : { xs, md: 1 + num };
+        return position === 1 ? {xs, md} : {xs, md: 1 + num};
     };
 
     return (
@@ -36,7 +36,7 @@ export default function Marketing({images}: Props) {
             {(marketingTexts.map((item, index) => (
                 <React.Fragment key={index}>
 
-                    <Grid item xs={12} md={6} order={order(index, 1)} >
+                    <Grid item xs={12} md={6} order={order(index, 1)}>
 
                         <Image
                             width={1000}
@@ -74,6 +74,16 @@ export default function Marketing({images}: Props) {
 
                 </React.Fragment>
             )))}
+            <Grid item xs={12} md={6} order={order(marketingTexts.length, 1)}>
+                <video
+                    style={{
+                        borderRadius: 16,
+                        width: '100%',
+                    }}
+                    controls
+                    src="https://cdn.shopify.com/videos/c/vp/314846e6aefe4ef0a79b2ac202101d2b/314846e6aefe4ef0a79b2ac202101d2b.HD-720p-4.5Mbps-20029571.mp4"
+                />
+            </Grid>
 
         </Grid>
     );
