@@ -18,30 +18,6 @@ const pageDict:PageDictionary = {
             description: 'LamaShop - test',
         }
     },
-    'test2.localhost:3000': {
-        productId: 'gid://shopify/Product/8621599228232',
-        theme: 'themeRed',
-        metadata: {
-            title: 'LamaShop - test',
-            description: 'LamaShop - test',
-        }
-    },
-    'test.lamashop.eu': {
-        productId: 'gid://shopify/Product/8621599228232',
-        theme: 'themeBlue',
-        metadata: {
-            title: 'LamaShop - test',
-            description: 'LamaShop - test',
-        }
-    },
-    'test2.lamashop.eu': {
-        productId: 'gid://shopify/Product/8621599228232',
-        theme: 'themeRed',
-        metadata: {
-            title: 'LamaShop - test',
-            description: 'LamaShop - test',
-        }
-    },
     'lumikitty.lamashop.eu': {
         productId: 'gid://shopify/Product/8621599228232',
         theme: 'themeOrange',
@@ -52,7 +28,7 @@ const pageDict:PageDictionary = {
     },
 }
 
-//export const fallbackDomain = 'https://test.lamashop.eu'
-export const fallbackDomain = 'http://test.localhost:3000'
+export const fallbackDomain = 'https://test.lamashop.eu'
+//export const fallbackDomain = 'http://test.localhost:3000'
 
 export default pageDict
