@@ -10,12 +10,12 @@ export default function CallToActionButton({ callToActionButtonText }: { callToA
     const goTo = () => {
         const element = document.querySelector('#scrollToId');
         if (element) {
-            const offset = element.getBoundingClientRect().top + window.scrollY - 60;
+            const offset = element.getBoundingClientRect().top + window.scrollY // - 60 to add offset
             window.scrollTo({ top: offset, behavior: 'smooth' });
         }
     };
 
     return (
-        <Button variant={"contained"} size={"large"} sx={{mt: 3}} onClick={goTo}>{callToActionButtonText}</Button>
+        <Button variant={"contained"} size={"large"} sx={{mt: 2}} onClick={goTo}>{callToActionButtonText}</Button>
     )
 }

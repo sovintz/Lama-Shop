@@ -10,6 +10,15 @@ export interface Variant {
     selectedOptions: SelectedOptions
 }
 
+export interface MarketingText {
+    title: string;
+    description: string;
+}
+export interface SpecificationEntry {
+    title: string;
+    value: string;
+}
+
 export interface GuaranteeObject {
     text: string;
 }
@@ -20,27 +29,26 @@ export interface FaqObject {
 }
 
 export interface DescriptionsType {
-    mainTitle?: string;
-    callToActionButtonText?: string;
-    marketingTitle?: string;
-    marketingDescription1?: string;
-    marketingDescription2?: string;
-    productDescription?: string;
-    amountText?: string;
-    buyButtonText?: string;
-    specificationsTitle?: string;
-    productSpecifications?: string;
-    guarantees?: GuaranteeObject[];
-    faqTitle?: string;
-    faqs?: FaqObject[];
-    errorMessages?: {
+    mainTitle: string;
+    subtitle: string;
+    callToActionButtonText: string;
+    marketingTexts: MarketingText[];
+    productDescription: string;
+    amountText: string;
+    buyButtonText: string;
+    specificationsTitle: string;
+    productSpecifications: SpecificationEntry[];
+    guarantees: GuaranteeObject[];
+    faqTitle: string;
+    faqs: FaqObject[];
+    errorMessages: {
         noCheckout: string;
     }
 }
 
 export interface ProductType {
     title: string;
-    description: string;
+    descriptionHtml: string;
     updatedAt: string;
     priceRange: {
         minVariantPrice: {
