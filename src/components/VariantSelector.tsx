@@ -49,6 +49,7 @@ export default function VariantSelector({raw_variants}: any) {
                             justifyContent: 'center',
                             alignItems: 'center',
                             p:0.7,
+                            cursor: 'pointer',
                         }}
                     >
                         <Box

@@ -3,15 +3,11 @@ import {Box} from "@mui/system";
 import {Grid, Typography} from "@mui/material";
 import CallToActionButton from "@/components/CallToActionButton";
 import {useProductStore} from "@/stores/productStore";
-import {DescriptionsType} from "@/utils/types";
+import {DescriptionsType, ImageContent} from "@/utils/types";
 
 
-interface Props {
-    image:{
-        url:string
-    }
-}
-export default function Header({image}:Props) {
+
+export default function Header({image}:ImageContent) {
 
     const {mainTitle = "Title", subtitle = "Subtitle", callToActionButtonText = "Button"}:DescriptionsType = useProductStore.getState().descriptions
 
@@ -27,6 +23,8 @@ export default function Header({image}:Props) {
                        top: 0,
                        right: 0,
                        zIndex:0,
+                       width: '100%',
+                       height: '100%',
                    }}
             />
             <Grid container zIndex={20} sx={{position: "absolute", top: "25%"}}>

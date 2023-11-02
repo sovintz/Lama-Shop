@@ -6,7 +6,7 @@ import Guarantees from "@/components/Guarantees";
 import {useProductStore} from "@/stores/productStore"
 import FAQ from "@/components/FAQ";
 import pageDict from "@/utils/pageConfig";
-import {DescriptionsType, ProductType} from "@/utils/types";
+import {DescriptionsType, ImageContent, ProductType} from "@/utils/types";
 import {Container} from "@mui/material";
 import StoreInitializer from "@/components/StoreInitializer";
 
@@ -19,20 +19,20 @@ export default async function Home() {
 
     await useProductStore.getState().setProduct()
     const product: ProductType = useProductStore.getState().product
-    const descriptionJSON: DescriptionsType = JSON.parse(product.descriptionHtml)
+   const descriptionJSON: DescriptionsType = JSON.parse(product.descriptionHtml)
 
     await useProductStore.getState().setDescriptions(descriptionJSON)
 
-    const images = product.images.edges
+    const media = product.media.edges
 
     return (
         <main>
             <StoreInitializer product={product} descriptions={descriptionJSON}/>
 
-            <Header image={images[0].node}/>
+            <Header {...media[0].node as ImageContent}/>
 
             <Container maxWidth="lg">
-                <Marketing images={images.slice(1)}/>
+                <Marketing media={media.slice(1)}/>
                 <Product product={product}/>
                 <Guarantees/>
                 <FAQ/>

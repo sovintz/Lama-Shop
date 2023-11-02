@@ -6,18 +6,35 @@ import {KeyboardArrowLeft, KeyboardArrowRight} from '@mui/icons-material';
 import {useSwipeable} from "react-swipeable";
 import Image from "next/image";
 import {useProductStore} from "@/stores/productStore";
+import {ImageContent, VideoContent} from "@/utils/types";
 
-export default function ImageCarousel({raw_images}: any) {
+interface Props {
+    raw_media: {
+        node: ImageContent | VideoContent
+    }[]
+}
+
+interface FilterType {
+    node: ImageContent | VideoContent
+}
+
+export default function ImageCarousel({raw_media}: Props) {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const numOfMarketingTexts = useProductStore(state => state.descriptions.marketingTexts.length)
 
-    const images = raw_images.slice(numOfMarketingTexts + 1).map((cur_img: any) => {
-        return {
-            imgPath: cur_img.node.url,
-            alt: cur_img.node.altText,
-        }
-    })
+    // remove videos from mediaArray, sanitize content and strip the marketing images from carousel
+    const images = raw_media
+        .slice(numOfMarketingTexts + 1)
+        .filter((cur_media: { node: ImageContent | VideoContent }): cur_media is {
+            node: ImageContent
+        } => cur_media.node.mediaContentType === 'IMAGE')
+        .map((cur_media: { node: ImageContent }) => {
+            return {
+                imgPath: cur_media.node.image.url,
+                alt: cur_media.node.image.altText,
+            }
+        })
 
     const maxSteps = images.length;
 
@@ -94,7 +111,7 @@ export default function ImageCarousel({raw_images}: any) {
                     </Button>
                 }
                 backButton={
-                    <Button size="small" onClick={handleBack} >
+                    <Button size="small" onClick={handleBack}>
                         < KeyboardArrowLeft/>
                     </Button>
                 }/>

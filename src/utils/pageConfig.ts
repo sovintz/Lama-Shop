@@ -28,7 +28,7 @@ const pageDict:PageDictionary = {
     },
 }
 
-export const fallbackDomain = 'https://test.lamashop.eu'
+export const fallbackDomain = 'https://lumikitty.lamashop.eu'
 //export const fallbackDomain = 'http://test.localhost:3000'
 
 export default pageDict

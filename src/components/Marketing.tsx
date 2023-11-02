@@ -1,22 +1,17 @@
 import {Grid, Typography} from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import {DescriptionsType} from "@/utils/types";
+import {DescriptionsType, ImageContent, VideoContent} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
-import {Box} from "@mui/system";
 
-interface ImageData {
-    node: {
-        url: string;
-        altText: string;
-    }
-}
 
 interface Props {
-    images: ImageData[];
+    media: {
+        node: ImageContent | VideoContent
+    }[]
 }
 
-export default function Marketing({images}: Props) {
+export default function Marketing({media}: Props) {
 
     const {
         marketingTexts
@@ -30,6 +25,17 @@ export default function Marketing({images}: Props) {
         return position === 1 ? {xs, md} : {xs, md: 1 + num};
     };
 
+    const videoData = (index: number, height = 480) => {
+        const video = media[index].node as VideoContent
+
+        const videoAtResolution = video.sources.find((item) => item.height === height);
+
+        return {
+            url: videoAtResolution?.url || video.sources[0]?.url || '',
+            mimeType: videoAtResolution?.mimeType || video.sources[0]?.mimeType || '',
+        };
+    }
+
     return (
         <Grid container sx={{py: 2}} spacing={{xs: 2, md: 3}}>
 
@@ -37,22 +43,41 @@ export default function Marketing({images}: Props) {
                 <React.Fragment key={index}>
 
                     <Grid item xs={12} md={6} order={order(index, 1)}>
+                        {media[index].node.mediaContentType === "IMAGE" ? (
+                            <Image
+                                width={1000}
+                                height={1000}
+                                style={{
+                                    objectFit: "cover",
+                                    top: 0,
+                                    right: 0,
+                                    zIndex: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    borderRadius: 16,
+                                }}
+                                src={media[index].node.image!.url}
+                                alt={media[index].node.image!.altText}
+                            />
+                        ) : (
+                            <video
+                                style={{
+                                    borderRadius: 16,
+                                    width: '100%',
+                                }}
+                                controls
 
-                        <Image
-                            width={1000}
-                            height={1000}
-                            style={{
-                                objectFit: "cover",
-                                top: 0,
-                                right: 0,
-                                zIndex: 0,
-                                width: '100%',
-                                height: '100%',
-                                borderRadius: 16,
-                            }}
-                            src={images[index].node.url}
-                            alt={images[index].node.altText}
-                        />
+                            >
+                                <source
+                                    src={videoData(index).url}
+                                    type={videoData(index).mimeType}
+                                />
+                                Your browser does not support the video tag.
+
+                            </video>
+                        )
+                        }
+
                     </Grid>
 
                     <Grid item xs={12} md={6} order={order(index, 2)}
@@ -74,16 +99,6 @@ export default function Marketing({images}: Props) {
 
                 </React.Fragment>
             )))}
-            <Grid item xs={12} md={6} order={order(marketingTexts.length, 1)}>
-                <video
-                    style={{
-                        borderRadius: 16,
-                        width: '100%',
-                    }}
-                    controls
-                    src="https://cdn.shopify.com/videos/c/vp/314846e6aefe4ef0a79b2ac202101d2b/314846e6aefe4ef0a79b2ac202101d2b.HD-720p-4.5Mbps-20029571.mp4"
-                />
-            </Grid>
 
         </Grid>
     );

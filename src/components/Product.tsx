@@ -31,7 +31,7 @@ export default function Product({ product }: { product: ProductType }) {
 
             <Grid item xs={12} md={6}>
                 <Grid item>
-                    <ImageCarousel raw_images={product.images.edges}/>
+                    <ImageCarousel raw_media={product.media.edges}/>
                 </Grid>
 
                 <Grid item>

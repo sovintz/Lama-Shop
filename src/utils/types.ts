@@ -76,13 +76,28 @@ export interface ProductType {
             };
         }[];
     };
-    images: {
+    media: {
         edges: {
-            node: {
-                url: string;
-                altText: string;
-            };
+            node: ImageContent | VideoContent;
         }[];
     };
-
 }
+
+export type ImageContent = {
+    mediaContentType: "IMAGE";
+    image: {
+        url: string;
+        altText: string;
+    };
+    sources?: never;
+};
+
+export type VideoContent = {
+    mediaContentType: "VIDEO";
+    image?: never;
+    sources: {
+        url: string;
+        mimeType: string;
+        height: number;
+    }[];
+};
