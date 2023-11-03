@@ -120,4 +120,14 @@ const checkoutCreateMutation = gql`
     }
   `;
 
-export {productQuery, checkoutCreateMutation};
+const cartCheckoutMutation = gql`
+    mutation createCart($cartInput: CartInput) {
+        cartCreate(input: $cartInput) {
+            cart {
+                id
+                checkoutUrl
+            }
+        }
+    }
+`
+export {productQuery, checkoutCreateMutation, cartCheckoutMutation};

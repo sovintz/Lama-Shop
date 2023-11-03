@@ -2,7 +2,7 @@
 import {storefront} from "@/utils/shopfy-gql";
 import {Alert, Button, Snackbar} from "@mui/material";
 import {useProductStore} from "@/stores/productStore";
-import {checkoutCreateMutation} from "@/utils/queries";
+import {cartCheckoutMutation, checkoutCreateMutation} from "@/utils/queries";
 import {useState} from "react";
 
 interface Props {
@@ -15,9 +15,8 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
 
     const createCheckoutLink = async () => {
         const {data} = await createCheckout()
-
         try {
-            const checkoutLink = data.checkoutCreate.checkout.webUrl
+            const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=sl-SI'
 
             window.open(checkoutLink, '_blank');
         } catch (e) {
@@ -45,7 +44,7 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
 
 async function createCheckout() {
 
-    const variables = {
+    /*const variables = {
         input: {
             lineItems: [
                 {
@@ -54,8 +53,19 @@ async function createCheckout() {
                 },
             ],
         },
+    };*/
+
+    const variables = {
+        cartInput: {
+            lines: [
+                {
+                    merchandiseId: useProductStore.getState().variant,
+                    quantity: useProductStore.getState().quantity,
+                },
+            ],
+        },
     };
 
-    return await storefront(checkoutCreateMutation, variables)
+    return await storefront(cartCheckoutMutation, variables)
 }
 
