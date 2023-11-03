@@ -93,15 +93,16 @@ const productQuery: string = gql`
     }
   }
   ... on Video {
+    previewImage {
+      url
+    }
     sources {
       url
       mimeType
       height
     }
   }
-}
-     
-     
+}   
    `
 
 const checkoutCreateMutation = gql`

@@ -86,6 +86,9 @@ export type ImageContent = {
 export type VideoContent = {
     mediaContentType: "VIDEO";
     image?: never;
+    previewImage: {
+     url: string;
+    }
     sources: {
         url: string;
         mimeType: string;
