@@ -18,7 +18,7 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
         try {
             const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=sl-SI'
 
-            window.open(checkoutLink, '_blank');
+            window.location.href = checkoutLink;
         } catch (e) {
             setOpen(true)
             setTimeout(() => setOpen(false), 5000)
