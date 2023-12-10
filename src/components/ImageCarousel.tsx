@@ -85,6 +85,7 @@ export default function ImageCarousel({raw_media}: Props) {
                                 height: '100%',
                                 borderRadius: 16,
                             }}
+                            priority={true}
                             src={cur_img.url}
                             alt={cur_img.altText}
                         />

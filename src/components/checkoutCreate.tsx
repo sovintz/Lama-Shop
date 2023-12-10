@@ -16,7 +16,7 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
     const createCheckoutLink = async () => {
         const {data} = await createCheckout()
         try {
-            const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=sl-SI'
+            const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=en'
 
             window.location.href = checkoutLink;
         } catch (e) {

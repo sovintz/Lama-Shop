@@ -92,9 +92,8 @@ export default function Marketing({media}: Props) {
                         <Typography variant="h5" component="h2" align="left">
                             {item.title}
                         </Typography>
-                        <Typography variant="body1" align="left">
-                            {item.description}
-                        </Typography>
+                        <Typography variant="body1" align="left" dangerouslySetInnerHTML={{ __html: item.description}}/>
+
                     </Grid>
 
 
