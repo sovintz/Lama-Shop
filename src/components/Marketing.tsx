@@ -33,9 +33,10 @@ export default function Marketing({media}: Props) {
         return {
             url: videoAtResolution?.url || video.sources[0]?.url || '',
             mimeType: videoAtResolution?.mimeType || video.sources[0]?.mimeType || '',
-            poster: "https://cdn.shopify.com/s/files/1/0784/8584/8392/files/preview_images/314846e6aefe4ef0a79b2ac202101d2b.thumbnail.0000000000.jpg?v=1698653074"
+            poster: video.previewImage.url || 'https://d2uolguxr56s4e.cloudfront.net/img/kartrapages/video_player_placeholder.gif'
         };
     }
+
 
     return (
         <Grid container sx={{py: 2}} spacing={{xs: 2, md: 3}}>
