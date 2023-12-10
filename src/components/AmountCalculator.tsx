@@ -51,10 +51,10 @@ export default function AmountCalculator({defaultAmount, raw_variants}: Props) {
     return (
         <Box>
             {varPrevAmount !== varAmount &&(<Typography variant="h6" component="h3" align="left" sx={{ textDecoration: 'line-through', color:'text.secondary' }}>
-                {varPrevAmount}€
+                {varPrevAmount}$
             </Typography>)}
             <Typography variant="h4" component="h3" align="left">
-                {varAmount}€
+                {varAmount}$
             </Typography>
         </Box>
     )
