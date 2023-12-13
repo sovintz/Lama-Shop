@@ -4,6 +4,7 @@ import {Alert, Button, Snackbar} from "@mui/material";
 import {useProductStore} from "@/stores/productStore";
 import {cartCheckoutMutation, checkoutCreateMutation} from "@/utils/queries";
 import {useState} from "react";
+import * as gtag from "../../gtag.js"
 
 interface Props {
     buyButtonText: string
@@ -17,6 +18,8 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
         const {data} = await createCheckout()
         try {
             const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=en'
+
+            gtag.event({action: 'click', category: 'Button', label: 'Buy Button Clicked', value: 1})
 
             window.location.href = checkoutLink;
         } catch (e) {
