@@ -19,7 +19,7 @@ export default function CheckoutCreate({buyButtonText, snackbarText}: Props) {
         try {
             const checkoutLink = data.cartCreate.cart.checkoutUrl + '&locale=en'
 
-            gtag.event({action: 'click', category: 'Button', label: 'Buy Button Clicked', value: 1})
+            gtag.event({action: 'click', category: 'Button', label: 'Buy Button Clicked', value: 2})
 
             window.location.href = checkoutLink;
         } catch (e) {
