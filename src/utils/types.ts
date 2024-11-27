@@ -46,6 +46,9 @@ export interface DescriptionsType {
     specificationsTitle: string;
     productSpecifications: SpecificationEntry[];
     guarantees: GuaranteeObject[];
+    reviewsTitle: string;
+    expandMoreReviewsButtonText: string;
+    reviews: ReviewType[];
     faqTitle: string;
     faqs: FaqObject[];
     errorMessages: {
@@ -72,6 +75,15 @@ export interface ProductType {
             node: ImageContent | VideoContent;
         }[];
     };
+}
+
+export interface ReviewType {
+    reviewText: string;
+    reviewerName: string;
+    reviewerAvatar?: string;
+    rating: number;
+    date?: string;
+    thumbnailCount: number;
 }
 
 export type ImageContent = {

@@ -9,6 +9,7 @@ import pageDict from "@/utils/pageConfig";
 import {DescriptionsType, ImageContent, ProductType} from "@/utils/types";
 import {Container} from "@mui/material";
 import StoreInitializer from "@/components/StoreInitializer";
+import ReviewPage from "@/components/Reviews/ReviewPage";
 
 export default async function Home() {
     const headersList = headers();
@@ -35,6 +36,7 @@ export default async function Home() {
                 <Marketing media={media.slice(1)}/>
                 <Product product={product}/>
                 <Guarantees/>
+                <ReviewPage/>
                 <FAQ/>
             </Container>
         </main>
