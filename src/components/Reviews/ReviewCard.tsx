@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardContent, Typography, Box, Avatar, Rating} from '@mui/material';
-import {ImageContent, ReviewType, VideoContent} from "@/utils/types";
+import {ImageContent, ReviewType} from "@/utils/types";
 import ReviewImage from "@/components/Reviews/ReviewImage";
 
 interface ReviewCardProps extends ReviewType {

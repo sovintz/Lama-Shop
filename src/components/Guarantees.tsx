@@ -1,7 +1,5 @@
-import {Avatar, Grid, SvgIcon, SvgIconTypeMap, Typography} from "@mui/material";
+import {Avatar, Grid, SvgIcon, Typography} from "@mui/material";
 import {EmojiEventsOutlined, LocalShippingOutlined, FavoriteBorderOutlined} from  '@mui/icons-material'
-import {OverridableComponent} from "@mui/types";
-import {Box} from "@mui/system";
 import {DescriptionsType, GuaranteeObject} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
 

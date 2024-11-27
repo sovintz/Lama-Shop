@@ -1,6 +1,6 @@
-import {Accordion, AccordionDetails, AccordionSummary, Grid, Typography} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 import {Box} from "@mui/system";
-import {DescriptionsType, FaqObject, ImageContent, ReviewType, VideoContent} from "@/utils/types";
+import {DescriptionsType, ImageContent, ReviewType, VideoContent} from "@/utils/types";
 import {useProductStore} from "@/stores/productStore";
 import ReviewCard from "@/components/Reviews/ReviewCard";
 import ReviewPageCollapse from "@/components/Reviews/ReviewPageCollapse";
