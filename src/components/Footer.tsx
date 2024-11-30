@@ -1,32 +1,46 @@
-import {AppBar, Toolbar, Typography} from "@mui/material";
-import {Box} from "@mui/system";
-import Image from "next/image";
-import { Bebas_Neue } from "next/font/google";
+import { AppBar, Toolbar, Typography } from '@mui/material'
+import { Box } from '@mui/system'
+import { Bebas_Neue } from 'next/font/google'
+import Image from 'next/image'
 
 const bebasNeue = Bebas_Neue({
-    weight: ["400"],
-    style: ["normal"],
-    subsets: ["latin"],
-});
+  weight: ['400'],
+  style: ['normal'],
+  subsets: ['latin'],
+})
 
 export default function Footer() {
-    return (
-        <AppBar position="static" sx={{p:2}}>
-            <Typography variant="body2" component="div" align="center">Powered by</Typography>
-                <Box sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                    <Typography variant="h6" component="div" align="center" fontSize={25} fontFamily={bebasNeue.style.fontFamily}>Lama</Typography>
-                    <Image
-                        src="/images/logo.png"
-                        width={50}
-                        height={50}
-                        alt="Lamashop"
-                    />
-                    <Typography variant="h6" component="div" align="center" fontSize={25} fontFamily={bebasNeue.style.fontFamily}>Shop</Typography>
-                </Box>
-            <Typography variant="body2" align="center" sx={{flexGrow: 1}}>
-                &copy; {new Date().getFullYear()}
-            </Typography>
-        </AppBar>
-    )
-
+  return (
+    <AppBar position='static' sx={{ p: 2 }}>
+      <Typography variant='body2' component='div' align='center'>
+        Powered by
+      </Typography>
+      <Box
+        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <Typography
+          variant='h6'
+          component='div'
+          align='center'
+          fontSize={25}
+          fontFamily={bebasNeue.style.fontFamily}
+        >
+          Lama
+        </Typography>
+        <Image src='/images/logo.png' width={50} height={50} alt='Lamashop' />
+        <Typography
+          variant='h6'
+          component='div'
+          align='center'
+          fontSize={25}
+          fontFamily={bebasNeue.style.fontFamily}
+        >
+          Shop
+        </Typography>
+      </Box>
+      <Typography variant='body2' align='center' sx={{ flexGrow: 1 }}>
+        &copy; {new Date().getFullYear()}
+      </Typography>
+    </AppBar>
+  )
 }
