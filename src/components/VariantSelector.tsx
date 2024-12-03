@@ -67,6 +67,8 @@ export default function VariantSelector({ raw_variants }: Props) {
               alignItems: 'center',
               p: 0.7,
               cursor: 'pointer',
+              aspectRatio: '1/1',
+              maxWidth: 75,
             }}
           >
             <Box
