@@ -1,93 +1,136 @@
-import {Button, Grid, Typography, Accordion, AccordionSummary, AccordionDetails} from "@mui/material";
-import ImageCarousel from "@/components/ImageCarousel";
-import VariantSelector from "@/components/VariantSelector";
-import CheckoutCreate from "@/components/checkoutCreate";
-import QuantityInput from "@/components/QuantityInput";
-import AmountCalculator from "@/components/AmountCalculator";
-import {ExpandMoreOutlined} from '@mui/icons-material'
-import {DescriptionsType, ProductType, SpecificationEntry} from "@/utils/types";
-import {useProductStore} from "@/stores/productStore";
-import {Box} from "@mui/system";
+import { ExpandMoreOutlined } from '@mui/icons-material'
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Grid,
+  Typography,
+} from '@mui/material'
+import { Box } from '@mui/system'
+
+import AmountCalculator from '@/components/AmountCalculator'
+import CheckoutCreate from '@/components/checkoutCreate'
+import ImageCarousel from '@/components/ImageCarousel'
+import QuantityInput from '@/components/QuantityInput'
+import VariantSelector from '@/components/VariantSelector'
+import { useProductStore } from '@/stores/productStore'
+import {
+  DescriptionsType,
+  ProductType,
+  SpecificationEntry,
+} from '@/utils/types'
+
 
 export default function Product({ product }: { product: ProductType }) {
+  const {
+    productDescription,
+    productSpecifications,
+    specificationsTitle,
+    amountText = 'Amount',
+    buyButtonText = 'Buy Now',
+    errorMessages,
+  }: DescriptionsType = useProductStore.getState().descriptions
 
-    const {
-        productDescription,
-        productSpecifications,
-        specificationsTitle,
-        amountText = "Amount",
-        buyButtonText = "Buy Now",
-        errorMessages,
-    }: DescriptionsType = useProductStore.getState().descriptions
+  return (
+    <Grid container spacing={3}>
+      <Grid item xs={12} justifyContent={'start'}>
+        <Typography variant='h4' component='h2' align='left' id='scrollToId'>
+          {product.title}
+        </Typography>
+      </Grid>
 
-    return (
-        <Grid container spacing={3}>
-
-            <Grid item xs={12} justifyContent={"start"}>
-                <Typography variant="h4" component="h2" align="left" id="scrollToId">
-                    {product.title}
-                </Typography>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-                <Grid item>
-                    <ImageCarousel raw_media={product.media.edges}/>
-                </Grid>
-
-                <Grid item>
-                    <VariantSelector raw_variants={product.variants.edges}/>
-                </Grid>
-            </Grid>
-
-            <Grid item xs={12} md={6}>
-                <Grid container>
-                    <Grid item xs={12} justifyContent={"start"} order={{xs:1, md:2}}
-                          sx={{
-                              mb: 1,
-                              display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center',
-                              flexGrow: 1
-                          }}>
-                        <AmountCalculator defaultAmount={product.priceRange.minVariantPrice.amount}
-                                          raw_variants={product.variants.edges}/>
-                        <QuantityInput amountText={amountText}/>
-                    </Grid>
-
-
-                    <Grid item xs={12} order={{xs:2, md:3}}>
-                        <CheckoutCreate buyButtonText={buyButtonText} snackbarText={errorMessages?.noCheckout ?? 'Error'}/>
-                    </Grid>
-
-                    <Grid item xs={12} sx={{mb: 2}} order={{xs:3, md:1}}>
-                        <Typography variant="body1" align="justify" dangerouslySetInnerHTML={{ __html: productDescription}}/>
-                    </Grid>
-
-                    <Grid item xs={12} order={{xs:4, md:4}}>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreOutlined/>}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography>{specificationsTitle}</Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                {productSpecifications.map((entry: SpecificationEntry, index: number) => (
-                                    <Box key={index} sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                                        <Typography variant={'subtitle2'} fontWeight="bold" align={'left'} fontSize={'small'}>
-                                            {entry.title}<span>:&nbsp;</span>
-                                        </Typography>
-                                        <Typography variant={'body2'} align={'left'} fontSize={'small'}>
-                                            {entry.value}
-                                        </Typography>
-                                    </Box>
-                                ))}
-                            </AccordionDetails>
-                        </Accordion>
-                    </Grid>
-                </Grid>
-            </Grid>
+      <Grid item xs={12} md={6}>
+        <Grid item>
+          <ImageCarousel raw_media={product.media.edges} />
         </Grid>
-    )
+
+        <Grid item>
+          <VariantSelector raw_variants={product.variants.edges} />
+        </Grid>
+      </Grid>
+
+      <Grid item xs={12} md={6}>
+        <Grid container>
+          <Grid
+            item
+            xs={12}
+            justifyContent={'start'}
+            order={{ xs: 1, md: 2 }}
+            sx={{
+              mb: 1,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexGrow: 1,
+            }}
+          >
+            <AmountCalculator
+              defaultAmount={product.priceRange.minVariantPrice.amount}
+              raw_variants={product.variants.edges}
+            />
+            <QuantityInput amountText={amountText} />
+          </Grid>
+
+          <Grid item xs={12} order={{ xs: 2, md: 3 }}>
+            <CheckoutCreate
+              buyButtonText={buyButtonText}
+              snackbarText={errorMessages?.noCheckout ?? 'Error'}
+            />
+          </Grid>
+
+          <Grid item xs={12} sx={{ mb: 2 }} order={{ xs: 3, md: 1 }}>
+            <Typography
+              variant='body1'
+              align='justify'
+              dangerouslySetInnerHTML={{ __html: productDescription }}
+            />
+          </Grid>
+
+          <Grid item xs={12} order={{ xs: 4, md: 4 }}>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreOutlined />}
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+              >
+                <Typography>{specificationsTitle}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                {productSpecifications.map(
+                  (entry: SpecificationEntry, index: number) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Typography
+                        variant={'subtitle2'}
+                        fontWeight='bold'
+                        align={'left'}
+                        fontSize={'small'}
+                      >
+                        {entry.title}
+                        <span>:&nbsp;</span>
+                      </Typography>
+                      <Typography
+                        variant={'body2'}
+                        align={'left'}
+                        fontSize={'small'}
+                      >
+                        {entry.value}
+                      </Typography>
+                    </Box>
+                  )
+                )}
+              </AccordionDetails>
+            </Accordion>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  )
 }
