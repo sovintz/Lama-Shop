@@ -4,9 +4,9 @@ import { headers } from 'next/headers'
 
 import Footer from '@/components/Footer'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import Pixel from '@/components/Pixel'
 import ThemeRegistry from '@/theme/ThemeRegistry'
 import pageDict from '@/utils/pageConfig'
-
 
 export async function generateMetadata(): Promise<Metadata> {
   const headersList = headers()
@@ -25,6 +25,9 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
+      <head>
+        <Pixel />
+      </head>
       <body>
         <GoogleAnalytics />
         <ThemeRegistry options={{ key: 'mui' }} hostname={hostname}>

@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { useProductStore } from '@/stores/productStore'
 import { Variant } from '@/utils/types'
 
-
 interface Props {
   defaultAmount: string
   raw_variants: {

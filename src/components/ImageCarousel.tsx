@@ -19,7 +19,7 @@ export default function ImageCarousel({ raw_media }: Props) {
   const [activeStep, setActiveStep] = React.useState(0)
 
   const numOfMarketingTexts = useProductStore(
-    (state) => state.descriptions.marketingTexts.length,
+    (state) => state.descriptions.marketingTexts.length
   )
 
   // remove videos from mediaArray, sanitize content and strip the marketing images from carousel
@@ -30,7 +30,7 @@ export default function ImageCarousel({ raw_media }: Props) {
         node: ImageContent | VideoContent
       }): cur_media is {
         node: ImageContent
-      } => cur_media.node.mediaContentType === 'IMAGE',
+      } => cur_media.node.mediaContentType === 'IMAGE'
     )
     .map((cur_media: { node: ImageContent }) => {
       return {
@@ -42,7 +42,7 @@ export default function ImageCarousel({ raw_media }: Props) {
   const maxSteps = images.length
 
   const numOfVariants = useProductStore(
-    (state) => state.product.variants.edges.length,
+    (state) => state.product.variants.edges.length
   )
   const selectedIndex = useProductStore((state) => state.variantIndex)
   const variantClicked = useProductStore((state) => state.variantClicked)
@@ -97,15 +97,15 @@ export default function ImageCarousel({ raw_media }: Props) {
       />
       <MobileStepper
         steps={maxSteps}
-        position="static"
+        position='static'
         activeStep={activeStep}
         nextButton={
-          <Button size="small" onClick={handleNext}>
+          <Button size='small' onClick={handleNext}>
             <KeyboardArrowRight />
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack}>
+          <Button size='small' onClick={handleBack}>
             <KeyboardArrowLeft />
           </Button>
         }

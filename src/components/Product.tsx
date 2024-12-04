@@ -3,7 +3,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Button,
   Grid,
   Typography,
 } from '@mui/material'
@@ -20,7 +19,6 @@ import {
   ProductType,
   SpecificationEntry,
 } from '@/utils/types'
-
 
 export default function Product({ product }: { product: ProductType }) {
   const {

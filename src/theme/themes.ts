@@ -133,10 +133,10 @@ const themePink = createTheme({
       textTransform: 'none',
     },
     h2: {
-      color: '#ffffff'
+      color: '#ffffff',
     },
     subtitle1: {
-      color: '#ffffff'
+      color: '#ffffff',
     },
   },
   palette: {

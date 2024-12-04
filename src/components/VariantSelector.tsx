@@ -3,7 +3,7 @@
 import { Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import Image from 'next/image'
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { useProductStore } from '@/stores/productStore'
 import { Variant } from '@/utils/types'
@@ -45,7 +45,6 @@ export default function VariantSelector({ raw_variants }: Props) {
     useProductStore.getState().setVariantClicked(true)
     changeVariant(step)
   }
-
 
   useEffect(() => {
     changeVariant(0)

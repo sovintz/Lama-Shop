@@ -32,7 +32,8 @@ const pageDict: PageDictionary = {
     theme: 'themePink',
     metadata: {
       title: 'HeartBloom - Love that attracts',
-      description: 'Discover HeartBloom – a versatile, elegant necklace that transforms from a four-leaf clover to four hearts. Made from premium stainless steel and sparkling cubic zirconia, it’s waterproof, hypoallergenic, and perfect for every occasion. Celebrate love, luck, and beauty with HeartBloom!',
+      description:
+        'Discover HeartBloom – a versatile, elegant necklace that transforms from a four-leaf clover to four hearts. Made from premium stainless steel and sparkling cubic zirconia, it’s waterproof, hypoallergenic, and perfect for every occasion. Celebrate love, luck, and beauty with HeartBloom!',
     },
   },
 }
