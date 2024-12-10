@@ -21,10 +21,16 @@ export default function ImageCarousel({ raw_media }: Props) {
   const numOfMarketingTexts = useProductStore(
     (state) => state.descriptions.marketingTexts.length
   )
+  const numOfReviewThumbnails = useProductStore
+    .getState()
+    .descriptions.reviews.reduce(
+      (sum, item) => sum + (item.thumbnailCount || 0),
+      0
+    )
 
   // remove videos from mediaArray, sanitize content and strip the marketing images from carousel
   const images = raw_media
-    .slice(numOfMarketingTexts + 1)
+    .slice(numOfMarketingTexts + numOfReviewThumbnails + 1)
     .filter(
       (cur_media: {
         node: ImageContent | VideoContent
